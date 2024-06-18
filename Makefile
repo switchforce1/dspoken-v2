@@ -21,6 +21,7 @@ help:
 	"> assets-prod   : Run assets-install fos-routes-dump + npm-install + encore-prod  \n" \
 	"> assets-watch  : Run + symfony assets install + fos-dump + webpack encore dev on watch mode  \n" \
 	"> php-sh        : Connect to php container inner terminal\n" \
+	"> ssh-php        : Connect to php container inner terminal\n" \
 # GLOBAL
 # USAGE
 init: composer-install cc db-update assets-all
@@ -28,6 +29,8 @@ init: composer-install cc db-update assets-all
 # DOCKER
 start:
 	docker compose up -d
+start-build:
+	docker compose up -d --build
 stop:
 	docker compose stop
 restart: docker-stop docker-start
@@ -37,6 +40,9 @@ build-no-cache:
 	docker compose build --no-cache
 php-sh:
 	docker compose exec php sh
+	
+ssh-php:
+	docker compose exec php bash
 # DOCKER
 # PHP APP
 ## COMPOSER
