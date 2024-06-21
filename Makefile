@@ -33,7 +33,7 @@ start-build:
 	docker compose up -d --build
 stop:
 	docker compose stop
-restart: docker-stop docker-start
+restart: stop start
 build:
 	docker compose build
 build-no-cache:
