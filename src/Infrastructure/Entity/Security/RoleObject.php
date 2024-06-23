@@ -1,0 +1,151 @@
+<?php
+
+namespace App\Entity\Security;
+
+use App\Entity\Common\EntityTrait;
+use App\Entity\EntityInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="security_role_object")
+ * @ORM\Entity(repositoryClass="App\Repository\Security\RoleObjectRepository")
+ */
+class RoleObject implements EntityInterface
+{
+    use EntityTrait;
+
+    const ROLE_ADMIN = "ROLE_ADMIN";
+    const ROLE_SUPER_ADMIN = "ROLE_SUPER_ADMIN";
+    const ROLE_USER = "ROLE_USER";
+    const ROLE_GUEST = "ROLE_GUEST";
+    const ROLE_MANAGER = "ROLE_MANAGER";
+    const ROLE_ANONYMOUS = "ROLE_ANONYMOUS";
+
+    const ALL_ROLES = [
+        self::ROLE_ADMIN,
+        self::ROLE_SUPER_ADMIN,
+        self::ROLE_USER,
+        self::ROLE_GUEST,
+        self::ROLE_MANAGER,
+        self::ROLE_ANONYMOUS,
+    ];
+
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
+     */
+    private $label;
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $code;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="\App\Entity\Security\UserRoleObject", mappedBy="roleObject")
+     */
+    private $userRoleObjects;
+
+    /**
+     * RoleObject constructor.
+     */
+    public function __construct()
+    {
+        $this->userRoleObjects = new ArrayCollection();
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     * @return RoleObject
+     */
+    public function setLabel(string $label): self
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return RoleObject
+     */
+    public function setDescription(string $description): RoleObject
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     * @return RoleObject
+     */
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getUserRoleObjects()
+    {
+        return $this->userRoleObjects;
+    }
+
+    /**
+     * @param ArrayCollection $userRoleObjects
+     * @return RoleObject
+     */
+    public function setUserRoleObjects(ArrayCollection $userRoleObjects): RoleObject
+    {
+        $this->userRoleObjects = $userRoleObjects;
+        return $this;
+    }
+}
