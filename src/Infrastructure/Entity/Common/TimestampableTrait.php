@@ -14,15 +14,15 @@ trait TimestampableTrait
 {
     /**
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    protected $createdAt;
+    #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    protected ?\DateTimeInterface $createdAt = null;
 
     /**
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    protected $updatedAt;
+    #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    protected ?\DateTimeInterface $updatedAt = null;
 
     /**
      * @return mixed

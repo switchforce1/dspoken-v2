@@ -13,9 +13,9 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Reponse à une question donnée par un membre
- * @ORM\Table(name="core_response_group")
- * @ORM\Entity(repositoryClass="App\Repository\Core\ResponseGroupRepository")
  */
+#[ORM\Table(name: 'core_response_group')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\ResponseGroupRepository::class)]
 class ResponseGroup implements EntityInterface
 {
     use EntityTrait,
@@ -26,30 +26,30 @@ class ResponseGroup implements EntityInterface
      * Code unique
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Quiz")
-     * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id", nullable=false)
      */
-    private $quiz;
+    #[ORM\JoinColumn(name: 'quiz_id', referencedColumnName: 'id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Quiz::class)]
+    private ?\App\Infrastructure\Entity\Core\Quiz $quiz = null;
 
     /**
      * @var Language
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
-     * @ORM\JoinColumn(name="language_id", referencedColumnName="id", nullable=false)
      */
-    protected $language;
+    #[ORM\JoinColumn(name: 'language_id', referencedColumnName: 'id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class)]
+    protected ?\App\Infrastructure\Entity\Core\Language $language = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    private ?\App\Infrastructure\Entity\Security\User $user = null;
 
     /**
      * ResponseGroup constructor.

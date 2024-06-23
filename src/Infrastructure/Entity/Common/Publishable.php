@@ -9,9 +9,9 @@ trait Publishable
 {
     /**
      * @var bool
-     * @ORM\Column(name="is_published", type="boolean", options={"default" : 0})
      */
-    protected $isPublished;
+    #[ORM\Column(name: 'is_published', type: 'boolean', options: ['default' => 0])]
+    protected ?bool $isPublished = null;
 
     /**
      * @return bool

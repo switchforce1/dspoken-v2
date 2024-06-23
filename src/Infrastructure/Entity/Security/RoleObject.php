@@ -7,10 +7,8 @@ use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="security_role_object")
- * @ORM\Entity(repositoryClass="App\Repository\Security\RoleObjectRepository")
- */
+#[ORM\Table(name: 'security_role_object')]
+#[ORM\Entity(repositoryClass: \App\Repository\Security\RoleObjectRepository::class)]
 class RoleObject implements EntityInterface
 {
     use EntityTrait;
@@ -31,35 +29,31 @@ class RoleObject implements EntityInterface
         self::ROLE_ANONYMOUS,
     ];
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
      */
-    private $label;
+    #[ORM\Column(type: 'string', length: 255, nullable: false, unique: true)]
+    private string $label;
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    #[ORM\Column(name: 'description', type: 'text', nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $code;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $code = null;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="\App\Infrastructure\Entity\Security\UserRoleObject", mappedBy="roleObject")
      */
-    private $userRoleObjects;
+    #[ORM\OneToMany(targetEntity: \\App\Infrastructure\Entity\Security\UserRoleObject::class, mappedBy: 'roleObject')]
+    private \Doctrine\Common\Collections\Collection $userRoleObjects;
 
     /**
      * RoleObject constructor.

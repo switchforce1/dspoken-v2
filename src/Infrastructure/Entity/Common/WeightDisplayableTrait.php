@@ -17,9 +17,8 @@ trait WeightDisplayableTrait
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="display_weight", type="integer", length=4, nullable=false)
      */
+    #[ORM\Column(name: 'display_weight', type: 'integer', length: 4, nullable: false)]
     protected int $displayWeight = 0;
 
     public function getDisplayWeight(): ?int

@@ -10,10 +10,8 @@ use App\Infrastructure\Entity\Core\Language;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_language_youtube_link")
- * @ORM\Entity(repositoryClass="App\Repository\Report\LanguageYoutubeLinkRepository")
- */
+#[ORM\Table(name: 'report_language_youtube_link')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageYoutubeLinkRepository::class)]
 class LanguageYoutubeLink implements EntityInterface
 {
     use EntityTrait,
@@ -22,14 +20,14 @@ class LanguageYoutubeLink implements EntityInterface
 
     /**
      * @var Language|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class)]
     private ?Language $language;
 
     /**
      * @var YoutubeLink|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\YoutubeLink")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\YoutubeLink::class)]
     private ?YoutubeLink $youtubeLink;
 
     public function __construct()

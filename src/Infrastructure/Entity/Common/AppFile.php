@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class AppFile
  * @package App\Infrastructure\Entity\Common
- * @ORM\Table(name="common_app_file")
- * @ORM\Entity(repositoryClass="App\Repository\Common\AppFileRepository")
  */
+#[ORM\Table(name: 'common_app_file')]
+#[ORM\Entity(repositoryClass: \App\Repository\Common\AppFileRepository::class)]
 class AppFile implements EntityInterface
 {
     use EntityTrait,IdentifierTrait;
@@ -36,51 +36,51 @@ class AppFile implements EntityInterface
 
     /**
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * @var string
-     * @ORM\Column(name="full_name", type="string", length=255, nullable=false)
      */
-    private $fullName;
+    #[ORM\Column(name: 'full_name', type: 'string', length: 255, nullable: false)]
+    private string $fullName;
 
     /**
      * @var string
-     * @ORM\Column(name="path", type="string", length=255, nullable=false)
      */
-    private $path;
+    #[ORM\Column(name: 'path', type: 'string', length: 255, nullable: false)]
+    private string $path;
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name;
+    #[ORM\Column(name: 'name', type: 'string', length: 255, nullable: false)]
+    private string $name;
 
     /**
      * @var string
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
-    private $type;
+    #[ORM\Column(name: 'type', type: 'string', length: 255, nullable: false)]
+    private string $type;
 
     /**
      * @var string
-     * @ORM\Column(name="extension", type="string", length=255, nullable=false)
      */
-    private $extension;
+    #[ORM\Column(name: 'extension', type: 'string', length: 255, nullable: false)]
+    private string $extension;
 
     /**
      * @var string
-     * @ORM\Column(name="section", type="string", length=255, nullable=false)
      */
-    private $section;
+    #[ORM\Column(name: 'section', type: 'string', length: 255, nullable: false)]
+    private string $section;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @var \DateTimeInterface
      */
-    private $createdAt;
+    #[ORM\Column(name: 'created_at', type: 'datetime')]
+    private ?\DateTimeInterface $createdAt = null;
 
     /**
      * AppFile constructor.

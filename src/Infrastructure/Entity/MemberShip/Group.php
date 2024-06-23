@@ -12,9 +12,9 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class Group
  * @package App\Infrastructure\Entity\MemberShip
- * @ORM\Table(name="member_ship_group")
- * @ORM\Entity(repositoryClass="App\Repository\MemberShip\GroupRepository")
  */
+#[ORM\Table(name: 'member_ship_group')]
+#[ORM\Entity(repositoryClass: \App\Repository\MemberShip\GroupRepository::class)]
 class Group implements EntityInterface
 {
     use EntityTrait,
@@ -22,24 +22,21 @@ class Group implements EntityInterface
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="code", type="text", nullable=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'text', nullable: true)]
+    private ?string $code = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="default_label", type="text", nullable=true)
      */
-    private $defaultLabel;
+    #[ORM\Column(name: 'default_label', type: 'text', nullable: true)]
+    private ?string $defaultLabel = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="default_description", type="text", nullable=true)
      */
-    private $defaultDescription;
+    #[ORM\Column(name: 'default_description', type: 'text', nullable: true)]
+    private ?string $defaultDescription = null;
 
     /**
      * Group constructor.

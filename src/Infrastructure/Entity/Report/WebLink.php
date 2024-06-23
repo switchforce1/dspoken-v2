@@ -8,10 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_web_link")
- * @ORM\Entity(repositoryClass="App\Repository\Report\WebLinkRepository")
- */
+#[ORM\Table(name: 'report_web_link')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\WebLinkRepository::class)]
 class WebLink extends AbstractReport implements EntityInterface
 {
     use IdentifierTrait;
@@ -22,26 +20,26 @@ class WebLink extends AbstractReport implements EntityInterface
 
     /**
      * @var string
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'url', type: 'string', length: 255, nullable: true)]
     private string $url;
 
     /**
      * @var string
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'type', type: 'string', length: 255, nullable: true)]
     private string $type;
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\Article::class)]
     private ?Article $article;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\DefaultReportVersion", mappedBy="webLink")
      */
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Report\DefaultReportVersion::class, mappedBy: 'webLink')]
     private ?Collection $defaultReportVersions;
 
     public function __construct()

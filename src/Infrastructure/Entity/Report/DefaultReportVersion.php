@@ -7,24 +7,22 @@ use App\Infrastructure\Entity\Common\IdentifierTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_default_report_version")
- * @ORM\Entity(repositoryClass="App\Repository\Report\DefaultReportVersionRepository")
- */
+#[ORM\Table(name: 'report_default_report_version')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\DefaultReportVersionRepository::class)]
 class DefaultReportVersion extends AbstractReportVersion implements EntityInterface
 {
     use IdentifierTrait;
 
     /**
      * @var WebLink|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\WebLink", inversedBy="defaultReportVersions")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\WebLink::class, inversedBy: 'defaultReportVersions')]
     private ?WebLink $webLink;
 
     /**
      * @var YoutubeLink|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\YoutubeLink", inversedBy="defaultReportVersions")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\YoutubeLink::class, inversedBy: 'defaultReportVersions')]
     private ?YoutubeLink $youtubeLink;
 
     public function __construct()

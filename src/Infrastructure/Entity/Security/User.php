@@ -10,63 +10,59 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Table(name="security_user")
- * @ORM\Entity(repositoryClass="App\Repository\Security\UserRepository")
- */
+#[ORM\Table(name: 'security_user')]
+#[ORM\Entity(repositoryClass: \App\Repository\Security\UserRepository::class)]
 class User implements EntityInterface,UserInterface
 {
     use EntityTrait;
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    protected ?int $id = null;
 
     /**
      * Code unique d'identification
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * @var string
-     * @ORM\Column(type="string", unique=true, nullable=false)
      */
-    protected $username;
+    #[ORM\Column(type: 'string', unique: true, nullable: false)]
+    protected string $username;
 
     /**
      * @var string
-     * @ORM\Column(type="string", name="email", unique=true, nullable=false)
      */
-    protected $email;
+    #[ORM\Column(type: 'string', name: 'email', unique: true, nullable: false)]
+    protected string $email;
 
     /**
      * @var bool
-     * @ORM\Column(type="boolean", name="enabled", nullable=false)
      */
-    protected $enabled = false;
+    #[ORM\Column(type: 'boolean', name: 'enabled', nullable: false)]
+    protected bool $enabled = false;
 
     /**
      * @var string
-     * @ORM\Column(type="string", name="enable_confirmation_token", unique=true, nullable=true)
      */
-    protected $enableConfirmationToken;
+    #[ORM\Column(type: 'string', name: 'enable_confirmation_token', unique: true, nullable: true)]
+    protected ?string $enableConfirmationToken = null;
 
     /**
      * @var string
-     * @ORM\Column(type="string", name="reset_password_token", unique=true, nullable=true)
      */
-    protected $resetPasswordToken;
+    #[ORM\Column(type: 'string', name: 'reset_password_token', unique: true, nullable: true)]
+    protected ?string $resetPasswordToken = null;
 
     /**
-    * @var string
-    * @ORM\Column(type="string", name="api_token", unique=true, nullable=true)
-    */
-    private $apiToken;
+     * @var string
+     */
+    #[ORM\Column(type: 'string', name: 'api_token', unique: true, nullable: true)]
+    private ?string $apiToken = null;
 
     /**
      * None encrypted password. Must never be persisted.
@@ -79,47 +75,48 @@ class User implements EntityInterface,UserInterface
      * Encrypted password. Must be persisted.
      *
      * @var string
-     * @ORM\Column(type="string", name="password", unique=false, nullable=false)
      */
-    protected $password;
+    #[ORM\Column(type: 'string', name: 'password', unique: false, nullable: false)]
+    protected string $password;
 
     /**
-     * @var \DateTime|null
-     * @ORM\Column(type="datetime", name="last_login", nullable=true)
+     * @var \DateTimeInterface|null
      */
-    protected $lastLogin;
+    #[ORM\Column(type: 'datetime', name: 'last_login', nullable: true)]
+    protected ?\DateTimeInterface $lastLogin = null;
 
     /**
      * Random string sent to the user email address in order to verify it.
      *
      * @var string|null
-     * @ORM\Column(type="string", name="confirmation_token", unique=true, nullable=true)
      */
-    protected $confirmationToken;
+    #[ORM\Column(type: 'string', name: 'confirmation_token', unique: true, nullable: true)]
+    protected ?string $confirmationToken = null;
 
     /**
-     * @var \DateTime|null
-     * @ORM\Column(type="datetime", name="password_requested_at", nullable=true)
+     * @var \DateTimeInterface|null
      */
-    protected $passwordRequestedAt;
+    #[ORM\Column(type: 'datetime', name: 'password_requested_at', nullable: true)]
+    protected ?\DateTimeInterface $passwordRequestedAt = null;
 
     /**
      * @var array
-     * @ORM\Column(type="array", name="roles", nullable=true)
      */
+    #[ORM\Column(type: 'array', name: 'roles', nullable: true)]
     protected $roles;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="\App\Infrastructure\Entity\Security\UserRoleObject", mappedBy="user")
      */
-    private $userRoleObjects;
+    #[ORM\OneToMany(targetEntity: \\App\Infrastructure\Entity\Security\UserRoleObject::class, mappedBy: 'user')]
+    private \Doctrine\Common\Collections\Collection $userRoleObjects;
 
     /**
      * User constructor.
      */
     public function __construct()
     {
+        $this->userRoleObjects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enabled = false;
         $this->roles = [];
         $this->code = Uuid::uuid4()->toString();
@@ -453,7 +450,7 @@ class User implements EntityInterface,UserInterface
      *
      * @return string|null The salt
      */
-    public function getSalt()
+    public function getSalt(): void
     {
         // TODO: Implement getSalt() method.
     }
@@ -464,7 +461,7 @@ class User implements EntityInterface,UserInterface
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // TODO: Implement eraseCredentials() method.
     }

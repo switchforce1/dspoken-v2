@@ -9,9 +9,7 @@ use App\Infrastructure\Entity\Core\ReferenceLanguage;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-/**
- * @ORM\MappedSuperclass
- */
+#[ORM\MappedSuperclass]
 abstract class AbstractReportVersion
 {
     use CodedTrait, EntityTrait;
@@ -19,20 +17,20 @@ abstract class AbstractReportVersion
 
     /**
      * @var string
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
+    #[ORM\Column(name: 'title', type: 'string', length: 255, nullable: false)]
     private string $title;
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="text", nullable=false)
      */
+    #[ORM\Column(name: 'description', type: 'text', nullable: false)]
     private string $description;
 
     /**
      * @var ReferenceLanguage|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\ReferenceLanguage::class)]
     private ?ReferenceLanguage $referenceLanguage;
 
     public function __construct()

@@ -16,54 +16,43 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Question elementaire à une reponse unique
- * @ORM\Table(name="core_question_version",
- *     uniqueConstraints={
- *        @ORM\UniqueConstraint(name="question_version_unique",
- *            columns={"question_id", "reference_language_id"})
- *    }
- * )
- * @ORM\Entity(repositoryClass="App\Repository\Core\QuestionVersionRepository")
- * @UniqueEntity(
- *      fields={"question_id", "reference_language_id"},
- *      message="QuestionVersion for given question  and reference_language already exists in database."
- * )
  */
+#[ORM\Table(name: 'core_question_version')]
+#[ORM\UniqueConstraint(name: 'question_version_unique', columns: ['question_id', 'reference_language_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\QuestionVersionRepository::class)]
+#[UniqueEntity(fields: ['question_id', 'reference_language_id'], message: 'QuestionVersion for given question  and reference_language already exists in database.')]
 class QuestionVersion implements EntityInterface
 {
     use EntityTrait,
         IdentifierTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Column(name="code", type="string", length=64, nullable=true)
-     */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 64, nullable: true)]
+    private ?string $code = null;
 
-    /**
-     * @ORM\Column(name="label", type="string", length=255, nullable=true)
-     */
-    private $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: true)]
+    private ?string $label = null;
 
     /**
      * @var Question
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Question", inversedBy="questionVersions")
-     * @ORM\JoinColumn(name="question_id", nullable=false)
      */
-    protected $question;
+    #[ORM\JoinColumn(name: 'question_id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Question::class, inversedBy: 'questionVersions')]
+    protected ?\App\Infrastructure\Entity\Core\Question $question = null;
 
     /**
      * @var ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
-     * @ORM\JoinColumn(name="reference_language_id", nullable=false)
      */
-    protected $referenceLanguage;
+    #[ORM\JoinColumn(name: 'reference_language_id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\ReferenceLanguage::class)]
+    protected ?\App\Infrastructure\Entity\Core\ReferenceLanguage $referenceLanguage = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="creator_id", nullable=true)
      */
-    protected $creator;
+    #[ORM\JoinColumn(name: 'creator_id', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
 
     /**
      * QuestionVersion constructor.

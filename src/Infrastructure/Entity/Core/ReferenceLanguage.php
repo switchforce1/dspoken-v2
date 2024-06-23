@@ -10,48 +10,41 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Langue de refenrce connue (au debut francais, anglais ... puis allemend ...)
- *
- * @ORM\Table(name="core_reference_language")
- * @ORM\Entity(repositoryClass="App\Repository\Core\ReferenceLanguageRepository")
  */
+#[ORM\Table(name: 'core_reference_language')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\ReferenceLanguageRepository::class)]
 class ReferenceLanguage implements EntityInterface
 {
     use EntityTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(name="code", type="string", length=5, nullable=false, unique=true)
-     */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 5, nullable: false, unique: true)]
+    private string $code;
 
-    /**
-     * @ORM\Column(name="label", type="string", length=255, nullable=false, unique=true)
-     */
-    private $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $label;
 
     /**
      * @var string
-     * @ORM\Column(type="text", length=255, nullable=true)
      */
-    private $description;
+    #[ORM\Column(type: 'text', length: 255, nullable: true)]
+    private ?string $description = null;
 
     /**
      * @var boolean
-     * @ORM\Column(name="enabled", type="boolean", length=255, nullable=true)
      */
-    protected $enabled = true;
+    #[ORM\Column(name: 'enabled', type: 'boolean', length: 255, nullable: true)]
+    protected ?bool $enabled = true;
 
     /**
      * @var boolean
-     * @ORM\Column(name="is_default", type="boolean", length=255, nullable=true)
      */
-    protected $isDefault = false;
+    #[ORM\Column(name: 'is_default', type: 'boolean', length: 255, nullable: true)]
+    protected ?bool $isDefault = false;
 
     /**
      * ReferenceLanguage constructor.

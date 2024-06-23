@@ -16,12 +16,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Class Subscription
  * @package App\Infrastructure\Entity\Subscription
- * @ORM\Table(name="subscription_subscription", uniqueConstraints={
- *     @ORM\UniqueConstraint(name="language_subscriber_unique", columns={"language_id", "subscriber_id"})
- * })
  *
- * @ORM\Entity(repositoryClass="App\Repository\Subscription\SubscriptionRepository")
  */
+#[ORM\Table(name: 'subscription_subscription')]
+#[ORM\UniqueConstraint(name: 'language_subscriber_unique', columns: ['language_id', 'subscriber_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\Subscription\SubscriptionRepository::class)]
 class Subscription implements EntityInterface
 {
     use EntityTrait,
@@ -32,115 +31,103 @@ class Subscription implements EntityInterface
      * Code unique d'identification d'une souscription pourra etre utilisé dans un lien par mail
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="request_message", type="text", nullable=true)
      */
-    private $requestMessage;
+    #[ORM\Column(name: 'request_message', type: 'text', nullable: true)]
+    private ?string $requestMessage = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="response_message", type="text", nullable=true)
      */
-    private $responseMessage;
+    #[ORM\Column(name: 'response_message', type: 'text', nullable: true)]
+    private ?string $responseMessage = null;
 
     /**
      * Accepted by language creator
      * @var bool
-     *
-     * @ORM\Column(name="accepted", type="boolean", nullable=false)
      */
-    private $accepted = false;
+    #[ORM\Column(name: 'accepted', type: 'boolean', nullable: false)]
+    private bool $accepted = false;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="accepted_at", nullable=true)
+     * @var \DateTimeInterface
      */
-    private $acceptedAt;
+    #[ORM\Column(type: 'datetime', name: 'accepted_at', nullable: true)]
+    private ?\DateTimeInterface $acceptedAt = null;
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="approved_by_id", referencedColumnName="id")
      */
-    private $acceptedBy;
+    #[ORM\JoinColumn(name: 'approved_by_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    private ?\App\Infrastructure\Entity\Security\User $acceptedBy = null;
 
     /**
      * Approved by Admin
      * @var bool
-     *
-     * @ORM\Column(name="approved", type="boolean", nullable=false)
      */
-    private $approved = false;
+    #[ORM\Column(name: 'approved', type: 'boolean', nullable: false)]
+    private bool $approved = false;
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="approved_by_id", referencedColumnName="id")
      */
-    private $approvedBy;
+    #[ORM\JoinColumn(name: 'approved_by_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    private ?\App\Infrastructure\Entity\Security\User $approvedBy = null;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="approved_at", nullable=true)
+     * @var \DateTimeInterface
      */
-    private $approvedAt;
+    #[ORM\Column(type: 'datetime', name: 'approved_at', nullable: true)]
+    private ?\DateTimeInterface $approvedAt = null;
 
     /**
      * Approve message by site team manager
      * @var string
-     *
-     * @ORM\Column(name="approve_message", type="text", nullable=true)
      */
-    private $approveMessage;
+    #[ORM\Column(name: 'approve_message', type: 'text', nullable: true)]
+    private ?string $approveMessage = null;
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="subscriber_id", referencedColumnName="id")
      */
-    private $subscriber;
+    #[ORM\JoinColumn(name: 'subscriber_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    private ?\App\Infrastructure\Entity\Security\User $subscriber = null;
 
     /**
      * @var Language
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
-     * @ORM\JoinColumn(name="language_id", referencedColumnName="id")
      */
-    private $language;
+    #[ORM\JoinColumn(name: 'language_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class)]
+    private ?\App\Infrastructure\Entity\Core\Language $language = null;
 
     /**
      * Created by language creator of for language creator
      * @var bool
-     *
-     * @ORM\Column(name="for_owner", type="boolean", nullable=false)
      */
-    private $forOwner = false;
+    #[ORM\Column(name: 'for_owner', type: 'boolean', nullable: false)]
+    private bool $forOwner = false;
 
     /**
      * Allow only viewing on language
      * @var bool
-     *
-     * @ORM\Column(name="for_viewer", type="boolean", nullable=false)
      */
-    private $forViewer = false;
+    #[ORM\Column(name: 'for_viewer', type: 'boolean', nullable: false)]
+    private bool $forViewer = false;
 
     /**
      * Allow edition on language
      * @var bool
-     *
-     * @ORM\Column(name="for_editor", type="boolean", nullable=false)
      */
-    private $forEditor = false;
+    #[ORM\Column(name: 'for_editor', type: 'boolean', nullable: false)]
+    private bool $forEditor = false;
 
 
     public function __construct()

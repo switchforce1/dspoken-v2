@@ -9,31 +9,28 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_article")
- * @ORM\Entity(repositoryClass="App\Repository\Report\ArticleRepository")
- */
+#[ORM\Table(name: 'report_article')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\ArticleRepository::class)]
 class Article extends AbstractReport implements EntityInterface
 {
     use IdentifierTrait;
 
     /**
      * @var string
-     * @ORM\Column(name="template_code", type="string", length=255, nullable=false)
      */
+    #[ORM\Column(name: 'template_code', type: 'string', length: 255, nullable: false)]
     private string $templateCode;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ReportSection", mappedBy="article")
      */
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Report\ReportSection::class, mappedBy: 'article')]
     private ?Collection $reportSections;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ArticleVersion", mappedBy="article",
-     *      cascade={"persist", "remove"})
      */
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Report\ArticleVersion::class, mappedBy: 'article', cascade: ['persist', 'remove'])]
     private ?Collection $articleVersions;
 
     public function __construct()

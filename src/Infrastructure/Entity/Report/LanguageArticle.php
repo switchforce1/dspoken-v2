@@ -11,10 +11,8 @@ use App\Infrastructure\Entity\Core\Language;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_language_article")
- * @ORM\Entity(repositoryClass="App\Repository\Report\LanguageArticleRepository")
- */
+#[ORM\Table(name: 'report_language_article')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageArticleRepository::class)]
 class LanguageArticle implements EntityInterface
 {
     use EntityTrait,
@@ -23,14 +21,14 @@ class LanguageArticle implements EntityInterface
 
     /**
      * @var Language|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class)]
     private ?Language $language;
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\Article::class)]
     private ?Article $article;
 
     public function __construct()

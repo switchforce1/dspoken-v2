@@ -16,9 +16,9 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Questionnaire (Lots de question)
- * @ORM\Table(name="core_quiz")
- * @ORM\Entity(repositoryClass="App\Repository\Core\QuizRepository")
  */
+#[ORM\Table(name: 'core_quiz')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\QuizRepository::class)]
 class Quiz implements EntityInterface
 {
     use EntityTrait,
@@ -26,71 +26,67 @@ class Quiz implements EntityInterface
         WeightDisplayableTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
     /**
      * Code unique d'identification d'un quiz pourra etre utilisé dans un lien par mail
      * Necessite une factory
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
-    /**
-     * @ORM\Column(type="string", name="label", length=255, nullable=true)
-     */
-    private $label;
-
-    /**
-     * @var string
-     * @ORM\Column(name="score", type="integer", length=4, nullable=false, options={"default" : 0})
-     */
-    private $score = 0;
+    #[ORM\Column(type: 'string', name: 'label', length: 255, nullable: true)]
+    private ?string $label = null;
 
     /**
      * @var string
-     * @ORM\Column(type="text", length=255, nullable=true)
      */
-    private $description;
+    #[ORM\Column(name: 'score', type: 'integer', length: 4, nullable: false, options: ['default' => 0])]
+    private int $score = 0;
+
+    /**
+     * @var string
+     */
+    #[ORM\Column(type: 'text', length: 255, nullable: true)]
+    private ?string $description = null;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\Question", mappedBy="quiz")
      */
-    private $questions;
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\Question::class, mappedBy: 'quiz')]
+    private \Doctrine\Common\Collections\Collection $questions;
 
     /**
      * Need for display on form/list/web page/translation
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\QuizVersion", mappedBy="quiz", cascade={"persist", "remove"})
      */
-    private $quizVersions;
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\QuizVersion::class, mappedBy: 'quiz', cascade: ['persist', 'remove'])]
+    private \Doctrine\Common\Collections\Collection $quizVersions;
 
     /**
      * @var AppFile
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Common\AppFile", cascade={"persist"})
-     * @ORM\JoinColumn(name="app_file_id", referencedColumnName="id")
      */
-    private $appFile;
+    #[ORM\JoinColumn(name: 'app_file_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Common\AppFile::class, cascade: ['persist'])]
+    private ?\App\Infrastructure\Entity\Common\AppFile $appFile = null;
 
     /**
      * @var boolean
-     * @ORM\Column(name="enabled", type="boolean", nullable=false)
      */
-    private $enabled = false;
+    #[ORM\Column(name: 'enabled', type: 'boolean', nullable: false)]
+    private bool $enabled = false;
 
     /**
      * @var boolean
-     * @ORM\Column(name="is_default", type="boolean", nullable=false)
      */
-    private $isDefault = false;
+    #[ORM\Column(name: 'is_default', type: 'boolean', nullable: false)]
+    private bool $isDefault = false;
 
     /**
      * Quiz constructor.

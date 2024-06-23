@@ -11,9 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class ContactMessage
  * @package App\Infrastructure\Entity\Message
- * @ORM\Table(name="message_contact_message")
- * @ORM\Entity(repositoryClass="App\Repository\Message\ContactMessageRepository")
  */
+#[ORM\Table(name: 'message_contact_message')]
+#[ORM\Entity(repositoryClass: \App\Repository\Message\ContactMessageRepository::class)]
 class ContactMessage extends AbstractMessage implements EntityInterface
 {
     use IdentifierTrait;
@@ -23,17 +23,15 @@ class ContactMessage extends AbstractMessage implements EntityInterface
 
     /**
      * @var string
-     *
-     * @ORM\Column (type="string", name="type", nullable=false)
      */
-    private $type;
+    #[ORM\Column(type: 'string', name: 'type', nullable: false)]
+    private string $type;
 
     /**
      * @var bool
-     *
-     * @ORM\Column (type="boolean", name="waiting_for_answer", nullable=false)
      */
-    private $waitingForAnswer;
+    #[ORM\Column(type: 'boolean', name: 'waiting_for_answer', nullable: false)]
+    private bool $waitingForAnswer;
 
     /**
      * ContactMessage constructor.

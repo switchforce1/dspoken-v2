@@ -14,10 +14,9 @@ trait CodedTrait
 {
     /**
      * @var string
-     *
-     * @ORM\Column(name="code", type="string", length=64, nullable=true)
      */
-    protected $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 64, nullable: true)]
+    protected ?string $code = null;
 
     /**
      * EntityVersion constructor.

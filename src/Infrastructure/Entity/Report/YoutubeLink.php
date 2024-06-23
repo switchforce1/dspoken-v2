@@ -11,10 +11,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Table(name="report_youtube_link")
- * @ORM\Entity(repositoryClass="App\Repository\Report\YoutubeLinkRepository")
- */
+#[ORM\Table(name: 'report_youtube_link')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\YoutubeLinkRepository::class)]
 class YoutubeLink extends AbstractReport implements EntityInterface
 {
     use IdentifierTrait;
@@ -22,27 +20,26 @@ class YoutubeLink extends AbstractReport implements EntityInterface
     /**
      * Assert\@Assert\Regex("^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$")
      * @var ?string
-     * @ORM\Column(name="video_link", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'video_link', type: 'string', length: 255, nullable: true)]
     private ?string $videoLink;
 
     /**
      * @var ?string|null
-     * @ORM\Column(name="channel_link", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'channel_link', type: 'string', length: 255, nullable: true)]
     private ?string $channelLink;
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\Article::class)]
     private ?Article $article;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\DefaultReportVersion", mappedBy="youtubeLink",
-     *     cascade={"persist", "remove"})
      */
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Report\DefaultReportVersion::class, mappedBy: 'youtubeLink', cascade: ['persist', 'remove'])]
     private ?Collection $defaultReportVersions;
 
     public function __construct()

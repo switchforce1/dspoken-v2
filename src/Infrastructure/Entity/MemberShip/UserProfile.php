@@ -14,9 +14,9 @@ use Ramsey\Uuid\Uuid;
  * Complementary user's informations that are not directly related to security context
  * Class UserProfile
  * @package App\Infrastructure\Entity\MemberShip
- * @ORM\Table(name="member_ship_user_profile")
- * @ORM\Entity(repositoryClass="App\Repository\MemberShip\GroupRepository")
  */
+#[ORM\Table(name: 'member_ship_user_profile')]
+#[ORM\Entity(repositoryClass: \App\Repository\MemberShip\GroupRepository::class)]
 class UserProfile implements EntityInterface
 {
     use IdentifierTrait,
@@ -25,60 +25,52 @@ class UserProfile implements EntityInterface
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="code", type="string", nullable=false)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', nullable: false)]
+    private string $code;
 
     /**
      * Replicated username by default
      * @var string
-     *
-     * @ORM\Column(name="public_username", type="string", nullable=false)
      */
-    private $publicUsername;
+    #[ORM\Column(name: 'public_username', type: 'string', nullable: false)]
+    private string $publicUsername;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="first_name", type="string", nullable=true)
      */
-    private $firstName;
+    #[ORM\Column(name: 'first_name', type: 'string', nullable: true)]
+    private ?string $firstName = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="last_name", type="string", nullable=true)
      */
-    private $lastName;
+    #[ORM\Column(name: 'last_name', type: 'string', nullable: true)]
+    private ?string $lastName = null;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="birthdate", type="datetime", nullable=true)
+     * @var \DateTimeInterface
      */
-    private $birthdate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="origin_country_code", type="string", nullable=true)
-     */
-    private $originCountryCode;
+    #[ORM\Column(name: 'birthdate', type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $birthdate = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="living_country_code", type="string", nullable=true)
      */
-    private $livingCountryCode;
+    #[ORM\Column(name: 'origin_country_code', type: 'string', nullable: true)]
+    private ?string $originCountryCode = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    #[ORM\Column(name: 'living_country_code', type: 'string', nullable: true)]
+    private ?string $livingCountryCode = null;
+
+    /**
+     * @var string
+     */
+    #[ORM\Column(name: 'description', type: 'text', nullable: true)]
+    private ?string $description = null;
 
     /**
      * UserProfile constructor.

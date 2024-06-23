@@ -11,48 +11,43 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class Message
  * @package App\Infrastructure\Entity\Contact
- * @ORM\MappedSuperclass
  */
+#[ORM\MappedSuperclass]
 abstract class AbstractMessage
 {
     use TimestampableTrait;
 
     /**
      * @var string
-     *
-     * @ORM\Column (type="string", name="code", nullable=false, unique=true)
      */
-    protected $code;
+    #[ORM\Column(type: 'string', name: 'code', nullable: false, unique: true)]
+    protected string $code;
 
     /**
      * @var string
-     *
-     * @ORM\Column (type="string", name="title", nullable=false)
      */
-    protected $title;
+    #[ORM\Column(type: 'string', name: 'title', nullable: false)]
+    protected string $title;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="content", type="text", nullable=false)
      */
-    protected $content;
+    #[ORM\Column(name: 'content', type: 'text', nullable: false)]
+    protected string $content;
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="sender_id", nullable=true)
      */
-    protected $sender;
+    #[ORM\JoinColumn(name: 'sender_id', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $sender = null;
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="recipient_id", referencedColumnName="id", nullable=true)
      */
-    protected $recipient;
+    #[ORM\JoinColumn(name: 'recipient_id', referencedColumnName: 'id', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $recipient = null;
 
     /**
      * AbstractMessage constructor.

@@ -15,34 +15,32 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class UserRoleObject
  * @package App\Infrastructure\Entity\Security
- * @ORM\Table(name="security_user_role_object")
- * @ORM\Entity(repositoryClass="App\Repository\Security\UserRoleObjectRepository")
  */
+#[ORM\Table(name: 'security_user_role_object')]
+#[ORM\Entity(repositoryClass: \App\Repository\Security\UserRoleObjectRepository::class)]
 class UserRoleObject implements EntityInterface
 {
     use EntityTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
     /**
      * @var RoleObject
-     * @ORM\ManyToOne(targetEntity="\App\Infrastructure\Entity\Security\RoleObject", inversedBy="userRoleObjects")
      */
-    private $roleObject;
+    #[ORM\ManyToOne(targetEntity: \\App\Infrastructure\Entity\Security\RoleObject::class, inversedBy: 'userRoleObjects')]
+    private ?\App\Infrastructure\Entity\Security\RoleObject $roleObject = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User", inversedBy="userRoleObjects")
      */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class, inversedBy: 'userRoleObjects')]
+    private ?\App\Infrastructure\Entity\Security\User $user = null;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $createAt;
 

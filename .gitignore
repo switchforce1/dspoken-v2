@@ -1,3 +1,7 @@
 vendor/
 var/
 docker/database/*
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

@@ -7,18 +7,16 @@ use App\Infrastructure\Entity\Common\IdentifierTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_article_version")
- * @ORM\Entity(repositoryClass="App\Repository\Report\ArticleVersionRepository")
- */
+#[ORM\Table(name: 'report_article_version')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\ArticleVersionRepository::class)]
 class ArticleVersion extends AbstractReportVersion implements EntityInterface
 {
     use IdentifierTrait;
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article", inversedBy="articleVersions")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\Article::class, inversedBy: 'articleVersions')]
     private ?Article $article;
 
     public function __construct()

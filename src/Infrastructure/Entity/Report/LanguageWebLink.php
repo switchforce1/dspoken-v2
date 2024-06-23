@@ -10,10 +10,8 @@ use App\Infrastructure\Entity\Core\Language;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="report_language_web_link")
- * @ORM\Entity(repositoryClass="App\Repository\Report\LanguageWebLinkRepository")
- */
+#[ORM\Table(name: 'report_language_web_link')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageWebLinkRepository::class)]
 class LanguageWebLink implements EntityInterface
 {
     use EntityTrait,
@@ -22,14 +20,14 @@ class LanguageWebLink implements EntityInterface
 
     /**
      * @var Language|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class)]
     private ?Language $language;
 
     /**
      * @var WebLink|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\WebLink")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\WebLink::class)]
     private ?WebLink $webLink;
 
     public function __construct()

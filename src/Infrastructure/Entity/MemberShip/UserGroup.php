@@ -12,9 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class UserGroup
  * @package App\Infrastructure\Entity\MemberShip
- * @ORM\Table(name="member_ship_user_group")
- * @ORM\Entity(repositoryClass="App\Repository\MemberShip\UserGroupRepository")
  */
+#[ORM\Table(name: 'member_ship_user_group')]
+#[ORM\Entity(repositoryClass: \App\Repository\MemberShip\UserGroupRepository::class)]
 class UserGroup implements EntityInterface
 {
     use EntityTrait,
@@ -22,17 +22,15 @@ class UserGroup implements EntityInterface
 
     /**
      * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    private ?\App\Infrastructure\Entity\Security\User $user = null;
 
     /**
      * @var Group
-     *
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\MemberShip\Group")
      */
-    private $group;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\MemberShip\Group::class)]
+    private ?\App\Infrastructure\Entity\MemberShip\Group $group = null;
 
     /**
      * @return User

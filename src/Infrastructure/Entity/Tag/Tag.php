@@ -12,10 +12,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-/**
- * @ORM\Table(name="tag_tag")
- * @ORM\Entity(repositoryClass="App\Repository\Tag\TagRepository")
- */
+#[ORM\Table(name: 'tag_tag')]
+#[ORM\Entity(repositoryClass: \App\Repository\Tag\TagRepository::class)]
 class Tag implements EntityInterface
 {
     use IdentifierTrait, EntityTrait, CodedTrait;

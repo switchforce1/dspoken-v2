@@ -16,9 +16,9 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Question
- * @ORM\Table(name="core_question")
- * @ORM\Entity(repositoryClass="App\Repository\Core\QuestionRepository")
  */
+#[ORM\Table(name: 'core_question')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\QuestionRepository::class)]
 class Question implements EntityInterface
 {
     use EntityTrait,
@@ -26,60 +26,57 @@ class Question implements EntityInterface
         WeightDisplayableTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
     /**
      * Code unique
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * Default label when no question version exist for requested language
-     *
-     * @ORM\Column(name="default_label", type="string", length=255, nullable=true)
      */
-    private $defaultLabel;
+    #[ORM\Column(name: 'default_label', type: 'string', length: 255, nullable: true)]
+    private ?string $defaultLabel = null;
 
     /**
      * @var string
-     * @ORM\Column(name="question_type_code", type="string", length=255, nullable=true)
      */
-    private $questionTypeCode;
+    #[ORM\Column(name: 'question_type_code', type: 'string', length: 255, nullable: true)]
+    private ?string $questionTypeCode = null;
 
     /**
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Quiz", inversedBy="questions")
-     * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      */
-    private $quiz;
+    #[ORM\JoinColumn(name: 'quiz_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Quiz::class, inversedBy: 'questions')]
+    private ?\App\Infrastructure\Entity\Core\Quiz $quiz = null;
 
     /**
      * Need for display on form/list/web page/translation
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\QuestionVersion", mappedBy="question", cascade={"persist", "remove"})
      */
-    private $questionVersions;
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\QuestionVersion::class, mappedBy: 'question', cascade: ['persist', 'remove'])]
+    private \Doctrine\Common\Collections\Collection $questionVersions;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
-    protected $creator;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
 
     /**
      * @var boolean
-     * @ORM\Column(name="enabled", type="boolean", length=255, nullable=true)
      */
-    protected $enabled = true;
+    #[ORM\Column(name: 'enabled', type: 'boolean', length: 255, nullable: true)]
+    protected ?bool $enabled = true;
 
     /**
      * Question constructor.

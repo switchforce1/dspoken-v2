@@ -13,9 +13,9 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class Visit
  * @package App\Infrastructure\Entity\Analysis
- * @ORM\Table(name="analysis_visit")
- * @ORM\Entity(repositoryClass="App\Repository\Analysis\VisitRepository")
  */
+#[ORM\Table(name: 'analysis_visit')]
+#[ORM\Entity(repositoryClass: \App\Repository\Analysis\VisitRepository::class)]
 class Visit implements EntityInterface
 {
     use IdentifierTrait,
@@ -26,31 +26,28 @@ class Visit implements EntityInterface
      * Code unique d'identification
      *
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false, unique: true)]
+    private string $code;
 
     /**
      * Must be unique later or in unique group (session_id+created_at)
      * @var string
-     *
-     * @ORM\Column(name="session_id", type="string", length=255, nullable=false, unique=false)
      */
-    private $sessionId;
+    #[ORM\Column(name: 'session_id', type: 'string', length: 255, nullable: false, unique: false)]
+    private string $sessionId;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="user_code", type="string", length=255, nullable=true)
      */
-    private $userCode;
+    #[ORM\Column(name: 'user_code', type: 'string', length: 255, nullable: true)]
+    private ?string $userCode = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="token", type="string", length=255, nullable=true)
      */
-    private $token;
+    #[ORM\Column(name: 'token', type: 'string', length: 255, nullable: true)]
+    private ?string $token = null;
 
     /**
      * Visit constructor.

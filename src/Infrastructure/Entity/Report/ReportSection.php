@@ -12,55 +12,52 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-/**
- * @ORM\Table(name="report_report_section")
- * @ORM\Entity(repositoryClass="App\Repository\Report\ReportSectionRepository")
- */
+#[ORM\Table(name: 'report_report_section')]
+#[ORM\Entity(repositoryClass: \App\Repository\Report\ReportSectionRepository::class)]
 class ReportSection implements EntityInterface
 {
     use IdentifierTrait, EntityTrait, CodedTrait;
 
     /**
      * @var ?string
-     * @ORM\Column(name="default_title", type="string", length=255, nullable=false)
      */
+    #[ORM\Column(name: 'default_title', type: 'string', length: 255, nullable: false)]
     private ?string $defaultTitle;
 
     /**
      * @var ?string
-     * @ORM\Column(name="default_content", type="text",length=65535, nullable=true)
      */
+    #[ORM\Column(name: 'default_content', type: 'text', length: 65535, nullable: true)]
     private ?string $defaultContent;
 
     /**
      * @var ?string
-     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'image_url', type: 'string', length: 255, nullable: true)]
     private ?string $imageUrl;
 
     /**
      * @var ?string
-     * @ORM\Column(name="template_code", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'template_code', type: 'string', length: 255, nullable: true)]
     private ?string $templateCode;
 
     /**
      * @var int
-     * @ORM\Column(name="position", type="integer", length=255,nullable=false)
      */
+    #[ORM\Column(name: 'position', type: 'integer', length: 255, nullable: false)]
     private int $position = 0;
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article", inversedBy="reportSections")
      */
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Report\Article::class, inversedBy: 'reportSections')]
     private ?Article $article;
 
     /**
      * @var Collection|ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ReportSectionVersion", mappedBy="reportSection",
-     *     cascade={"persist", "remove"})
      */
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Report\ReportSectionVersion::class, mappedBy: 'reportSection', cascade: ['persist', 'remove'])]
     private Collection $reportSectionVersions;
 
     public function __construct()

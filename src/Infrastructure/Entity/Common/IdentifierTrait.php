@@ -11,12 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 trait IdentifierTrait
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    protected ?int $id = null;
 
     /**
      * @return mixed

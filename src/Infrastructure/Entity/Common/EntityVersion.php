@@ -10,37 +10,34 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class EntityVersion
  * @package App\Infrastructure\Entity\Common
- * @ORM\MappedSuperclass
  */
+#[ORM\MappedSuperclass]
 abstract class EntityVersion
 {
     /**
      * @var string
-     *
-     * @ORM\Column(name="code", type="string", length=64, nullable=true)
      */
-    protected $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 64, nullable: true)]
+    protected ?string $code = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="label", type="string", length=255, nullable=true)
      */
-    protected $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: true)]
+    protected ?string $label = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    protected $description;
+    #[ORM\Column(name: 'description', type: 'text', nullable: true)]
+    protected ?string $description = null;
 
     /**
      * @var ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
-     * @ORM\JoinColumn(name="reference_language_id", nullable=false)
      */
-    protected $referenceLanguage;
+    #[ORM\JoinColumn(name: 'reference_language_id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\ReferenceLanguage::class)]
+    protected ?\App\Infrastructure\Entity\Core\ReferenceLanguage $referenceLanguage = null;
 
     /**
      * EntityVersion constructor.

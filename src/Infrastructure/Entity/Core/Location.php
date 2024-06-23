@@ -13,95 +13,85 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Information de localisation
- * @ORM\Table(name="core_location")
- * @ORM\Entity(repositoryClass="App\Repository\Core\LocationRepository")
  */
+#[ORM\Table(name: 'core_location')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\LocationRepository::class)]
 class Location implements EntityInterface
 {
     use EntityTrait,
         WeightDisplayableTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
     /**
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false)]
+    private string $code;
 
-    /**
-     * @ORM\Column(name="label", type="string", length=255, nullable=true)
-     */
-    private $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: true)]
+    private ?string $label = null;
 
-    /**
-     * @ORM\Column(name="country_code", type="string", length=255, nullable=true)
-     */
-    private $countryCode;
+    #[ORM\Column(name: 'country_code', type: 'string', length: 255, nullable: true)]
+    private ?string $countryCode = null;
 
-    /**
-     * @ORM\Column(name="region", type="string", length=255, nullable=true)
-     */
-    private $region;
+    #[ORM\Column(name: 'region', type: 'string', length: 255, nullable: true)]
+    private ?string $region = null;
 
-    /**
-     * @ORM\Column(name="people", type="string", length=255, nullable=true)
-     */
-    private $people;
+    #[ORM\Column(name: 'people', type: 'string', length: 255, nullable: true)]
+    private ?string $people = null;
 
     /**
      * @var string
-     * @ORM\Column(name="latitude", type="float", length=255, nullable=false)
      */
-    private $latitude;
+    #[ORM\Column(name: 'latitude', type: 'float', length: 255, nullable: false)]
+    private float $latitude;
 
     /**
      * @var string
-     * @ORM\Column(name="longitude", type="float", length=255, nullable=false)
      */
-    private $longitude;
+    #[ORM\Column(name: 'longitude', type: 'float', length: 255, nullable: false)]
+    private float $longitude;
 
     /**
      * @var string
-     * @ORM\Column(name="extended_length", type="float", nullable=true)
      */
-    private $extendedLength;
+    #[ORM\Column(name: 'extended_length', type: 'float', nullable: true)]
+    private ?float $extendedLength = null;
 
     /**
      * @var integer
-     * @ORM\Column(name="raduis", type="integer", nullable=true)
      */
-    private $raduis;
+    #[ORM\Column(name: 'raduis', type: 'integer', nullable: true)]
+    private ?int $raduis = null;
 
     /**
      * @var string
-     * @ORM\Column(name="circumstances", type="text", nullable=true)
      */
-    private $circumstances;
+    #[ORM\Column(name: 'circumstances', type: 'text', nullable: true)]
+    private ?string $circumstances = null;
 
     /**
      * @var bool
-     * @ORM\Column(name="is_main", type="boolean", nullable=false)
      */
-    private $isMain = false;
+    #[ORM\Column(name: 'is_main', type: 'boolean', nullable: false)]
+    private bool $isMain = false;
 
     /**
      * @var Language
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language", inversedBy="locations")
      */
-    private $language;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Language::class, inversedBy: 'locations')]
+    private ?\App\Infrastructure\Entity\Core\Language $language = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
-    protected $creator;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
 
     /**
      * Location constructor.

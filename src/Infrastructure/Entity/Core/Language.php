@@ -17,9 +17,9 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * La langue créée
- * @ORM\Table(name="core_language")
- * @ORM\Entity(repositoryClass="App\Repository\Core\LanguageRepository")
  */
+#[ORM\Table(name: 'core_language')]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\LanguageRepository::class)]
 class Language implements EntityInterface
 {
     use EntityTrait,
@@ -27,68 +27,56 @@ class Language implements EntityInterface
         WeightDisplayableTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(name="label", type="string", length=255, nullable=true)
-     */
-    private $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: true)]
+    private ?string $label = null;
 
     /**
      * @var string
-     * @ORM\Column(name="code", type="string", length=255, nullable=false)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 255, nullable: false)]
+    private string $code;
 
     /**
      * @var string
-     * @ORM\Column(name="score", type="integer", length=4, nullable=false, options={"default" : 0})
      */
-    private $score = 0;
+    #[ORM\Column(name: 'score', type: 'integer', length: 4, nullable: false, options: ['default' => 0])]
+    private int $score = 0;
 
-    /**
-     * @ORM\Column(name="description", type="text", length=16777215, nullable=true)
-     */
-    private $description;
+    #[ORM\Column(name: 'description', type: 'text', length: 16777215, nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\Column(name="country_code", type="string", length=255, nullable=true)
-     */
-    private $countryCode;
+    #[ORM\Column(name: 'country_code', type: 'string', length: 255, nullable: true)]
+    private ?string $countryCode = null;
 
-    /**
-     * @ORM\Column(name="region", type="string", length=255, nullable=true)
-     */
-    private $region;
+    #[ORM\Column(name: 'region', type: 'string', length: 255, nullable: true)]
+    private ?string $region = null;
 
-    /**
-     * @ORM\Column(name="people", type="string", length=255, nullable=true)
-     */
-    private $people;
+    #[ORM\Column(name: 'people', type: 'string', length: 255, nullable: true)]
+    private ?string $people = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
-    protected $creator;
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\Location", mappedBy="language")
      */
-    private $locations;
+    #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\Location::class, mappedBy: 'language')]
+    private \Doctrine\Common\Collections\Collection $locations;
 
     /**
      * @var AppFile
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Common\AppFile", cascade={"persist"})
-     * @ORM\JoinColumn(name="app_file_id", referencedColumnName="id", nullable=true)
      */
-    private $appFile;
+    #[ORM\JoinColumn(name: 'app_file_id', referencedColumnName: 'id', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Common\AppFile::class, cascade: ['persist'])]
+    private ?\App\Infrastructure\Entity\Common\AppFile $appFile = null;
 
     /**
      * Language constructor.

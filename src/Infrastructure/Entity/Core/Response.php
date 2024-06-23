@@ -11,56 +11,48 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Reponse à une question données par un membre
- * @ORM\Table(name="core_response",
- *     uniqueConstraints={
- *        @ORM\UniqueConstraint(name="question_response_group_unique",
- *            columns={"question_id", "response_group_id"})
- *    }
- * )
- * @ORM\Entity(repositoryClass="App\Repository\Core\ResponseRepository")
  */
+#[ORM\Table(name: 'core_response')]
+#[ORM\UniqueConstraint(name: 'question_response_group_unique', columns: ['question_id', 'response_group_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\ResponseRepository::class)]
 class Response implements EntityInterface
 {
     use EntityTrait,
         TimestampableTrait;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
+
+    #[ORM\Column(name: 'answer', type: 'string', length: 255, nullable: true)]
+    private ?string $answer = null;
 
     /**
-     * @ORM\Column(name="answer", type="string", length=255, nullable=true)
+     * @var \DateTimeInterface
      */
-    private $answer;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(name="datetime", type="datetime", nullable=true)
-     */
-    private $datetime;
+    #[ORM\Column(name: 'datetime', type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $datetime = null;
 
     /**
      * @var int
-     * @ORM\Column(name="version", type="integer", nullable=true)
      */
-    private $version = 1;
+    #[ORM\Column(name: 'version', type: 'integer', nullable: true)]
+    private ?int $version = 1;
 
     /**
      * @var Question
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Question")
-     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
-    protected $question;
+    #[ORM\JoinColumn(name: 'question_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Question::class)]
+    protected ?\App\Infrastructure\Entity\Core\Question $question = null;
 
     /**
      * @var ResponseGroup
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ResponseGroup")
-     * @ORM\JoinColumn(name="response_group_id", referencedColumnName="id")
      */
-    private $responseGroup;
+    #[ORM\JoinColumn(name: 'response_group_id', referencedColumnName: 'id')]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\ResponseGroup::class)]
+    private ?\App\Infrastructure\Entity\Core\ResponseGroup $responseGroup = null;
 
     /**
      * Response constructor.

@@ -11,9 +11,7 @@ use App\Infrastructure\Entity\Core\Language;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-/**
- * @ORM\MappedSuperclass
- */
+#[ORM\MappedSuperclass]
 abstract class AbstractReport
 {
     use TimestampableTrait,
@@ -22,14 +20,14 @@ abstract class AbstractReport
         CodedTrait;
     /**
      * @var string
-     * @ORM\Column(name="default_title", type="string", length=64, nullable=true)
      */
+    #[ORM\Column(name: 'default_title', type: 'string', length: 64, nullable: true)]
     private string $defaultTitle;
 
     /**
      * @var string
-     * @ORM\Column(name="default_description", type="text", nullable=false)
      */
+    #[ORM\Column(name: 'default_description', type: 'text', nullable: false)]
     private string $defaultDescription;
 
     public function __construct()

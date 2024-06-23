@@ -16,14 +16,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Quiz elementaire à une reponse unique
- * @ORM\Table(name="core_quiz_version",
- *     uniqueConstraints={
- *        @ORM\UniqueConstraint(name="quiz_version_unique",
- *            columns={"quiz_id", "reference_language_id"})
- *    }
- * )
- * @ORM\Entity(repositoryClass="App\Repository\Core\QuizVersionRepository")
  */
+#[ORM\Table(name: 'core_quiz_version')]
+#[ORM\UniqueConstraint(name: 'quiz_version_unique', columns: ['quiz_id', 'reference_language_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\Core\QuizVersionRepository::class)]
 class QuizVersion implements EntityInterface
 {
     use EntityTrait,
@@ -32,45 +28,42 @@ class QuizVersion implements EntityInterface
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="code", type="string", length=64, nullable=true)
      */
-    private $code;
+    #[ORM\Column(name: 'code', type: 'string', length: 64, nullable: true)]
+    private ?string $code = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="label", type="string", length=255, nullable=true)
      */
-    private $label;
+    #[ORM\Column(name: 'label', type: 'string', length: 255, nullable: true)]
+    private ?string $label = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    #[ORM\Column(name: 'description', type: 'text', nullable: true)]
+    private ?string $description = null;
 
     /**
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Quiz", inversedBy="quizVersions")
-     * @ORM\JoinColumn(name="quiz_id", nullable=false)
      */
-    protected $quiz;
+    #[ORM\JoinColumn(name: 'quiz_id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Quiz::class, inversedBy: 'quizVersions')]
+    protected ?\App\Infrastructure\Entity\Core\Quiz $quiz = null;
 
     /**
      * @var ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
-     * @ORM\JoinColumn(name="reference_language_id", nullable=false)
      */
-    protected $referenceLanguage;
+    #[ORM\JoinColumn(name: 'reference_language_id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\ReferenceLanguage::class)]
+    protected ?\App\Infrastructure\Entity\Core\ReferenceLanguage $referenceLanguage = null;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
-     * @ORM\JoinColumn(name="creator_id", nullable=true)
      */
-    protected $creator;
+    #[ORM\JoinColumn(name: 'creator_id', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
+    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
 
     /**
      * QuizVersion constructor.
