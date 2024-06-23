@@ -1,0 +1,4 @@
+App\Infrastructure\Entity\Security\User:
+  operations:
+    ApiPlatform\Metadata\GetCollection: ~
+    ApiPlatform\Metadata\Get: ~
