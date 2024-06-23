@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\MemberShip;
+namespace App\Infrastructure\Entity\MemberShip;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Class Group
- * @package App\Entity\MemberShip
+ * @package App\Infrastructure\Entity\MemberShip
  * @ORM\Table(name="member_ship_group")
  * @ORM\Entity(repositoryClass="App\Repository\MemberShip\GroupRepository")
  */

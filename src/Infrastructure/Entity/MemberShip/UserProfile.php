@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\MemberShip;
+namespace App\Infrastructure\Entity\MemberShip;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Complementary user's informations that are not directly related to security context
  * Class UserProfile
- * @package App\Entity\MemberShip
+ * @package App\Infrastructure\Entity\MemberShip
  * @ORM\Table(name="member_ship_user_profile")
  * @ORM\Entity(repositoryClass="App\Repository\MemberShip\GroupRepository")
  */

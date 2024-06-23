@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\MemberShip;
+namespace App\Infrastructure\Entity\MemberShip;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class UserGroup
- * @package App\Entity\MemberShip
+ * @package App\Infrastructure\Entity\MemberShip
  * @ORM\Table(name="member_ship_user_group")
  * @ORM\Entity(repositoryClass="App\Repository\MemberShip\UserGroupRepository")
  */
@@ -23,14 +23,14 @@ class UserGroup implements EntityInterface
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
     private $user;
 
     /**
      * @var Group
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\MemberShip\Group")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\MemberShip\Group")
      */
     private $group;
 

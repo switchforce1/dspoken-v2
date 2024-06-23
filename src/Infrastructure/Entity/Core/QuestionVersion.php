@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,21 +46,21 @@ class QuestionVersion implements EntityInterface
 
     /**
      * @var Question
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Question", inversedBy="questionVersions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Question", inversedBy="questionVersions")
      * @ORM\JoinColumn(name="question_id", nullable=false)
      */
     protected $question;
 
     /**
      * @var ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\ReferenceLanguage")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
      * @ORM\JoinColumn(name="reference_language_id", nullable=false)
      */
     protected $referenceLanguage;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="creator_id", nullable=true)
      */
     protected $creator;

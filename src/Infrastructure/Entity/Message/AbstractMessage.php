@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Message;
+namespace App\Infrastructure\Entity\Message;
 
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Class Message
- * @package App\Entity\Contact
+ * @package App\Infrastructure\Entity\Contact
  * @ORM\MappedSuperclass
  */
 abstract class AbstractMessage
@@ -41,7 +41,7 @@ abstract class AbstractMessage
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="sender_id", nullable=true)
      */
     protected $sender;
@@ -49,7 +49,7 @@ abstract class AbstractMessage
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="recipient_id", referencedColumnName="id", nullable=true)
      */
     protected $recipient;

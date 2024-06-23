@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\CodedTrait;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Core\ReferenceLanguage;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\CodedTrait;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Core\ReferenceLanguage;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -33,13 +33,13 @@ class ReportSectionVersion implements EntityInterface
 
     /**
      * @var ?ReportSection
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\ReportSection", inversedBy="reportSectionVersions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\ReportSection", inversedBy="reportSectionVersions")
      */
     private ?ReportSection $reportSection;
 
     /**
      * @var ?ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\ReferenceLanguage")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
      */
     private ?ReferenceLanguage $referenceLanguage;
 

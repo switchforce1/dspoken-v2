@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Common;
+namespace App\Infrastructure\Entity\Common;
 
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\EntityInterface;
 use Ramsey\Uuid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class AppFile
- * @package App\Entity\Common
+ * @package App\Infrastructure\Entity\Common
  * @ORM\Table(name="common_app_file")
  * @ORM\Entity(repositoryClass="App\Repository\Common\AppFileRepository")
  */

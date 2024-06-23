@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,7 +17,7 @@ class ArticleVersion extends AbstractReportVersion implements EntityInterface
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\Article", inversedBy="articleVersions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article", inversedBy="articleVersions")
      */
     private ?Article $article;
 

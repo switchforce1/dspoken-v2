@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,13 +25,13 @@ class Article extends AbstractReport implements EntityInterface
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Entity\Report\ReportSection", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ReportSection", mappedBy="article")
      */
     private ?Collection $reportSections;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Entity\Report\ArticleVersion", mappedBy="article",
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ArticleVersion", mappedBy="article",
      *      cascade={"persist", "remove"})
      */
     private ?Collection $articleVersions;

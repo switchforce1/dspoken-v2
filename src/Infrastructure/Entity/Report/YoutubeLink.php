@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\CodedTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\CodedTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -34,13 +34,13 @@ class YoutubeLink extends AbstractReport implements EntityInterface
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\Article")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article")
      */
     private ?Article $article;
 
     /**
      * @var Collection|ArrayCollection|null
-     * @ORM\OneToMany(targetEntity="App\Entity\Report\DefaultReportVersion", mappedBy="youtubeLink",
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\DefaultReportVersion", mappedBy="youtubeLink",
      *     cascade={"persist", "remove"})
      */
     private ?Collection $defaultReportVersions;

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,13 +17,13 @@ class DefaultReportVersion extends AbstractReportVersion implements EntityInterf
 
     /**
      * @var WebLink|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\WebLink", inversedBy="defaultReportVersions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\WebLink", inversedBy="defaultReportVersions")
      */
     private ?WebLink $webLink;
 
     /**
      * @var YoutubeLink|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\YoutubeLink", inversedBy="defaultReportVersions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\YoutubeLink", inversedBy="defaultReportVersions")
      */
     private ?YoutubeLink $youtubeLink;
 

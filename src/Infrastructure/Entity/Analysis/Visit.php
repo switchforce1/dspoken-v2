@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Entity\Analysis;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Class Visit
- * @package App\Entity\Analysis
+ * @package App\Infrastructure\Entity\Analysis
  * @ORM\Table(name="analysis_visit")
  * @ORM\Entity(repositoryClass="App\Repository\Analysis\VisitRepository")
  */

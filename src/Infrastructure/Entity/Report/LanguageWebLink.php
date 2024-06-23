@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Core\Language;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Core\Language;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,13 +22,13 @@ class LanguageWebLink implements EntityInterface
 
     /**
      * @var Language|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Language")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      */
     private ?Language $language;
 
     /**
      * @var WebLink|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\WebLink")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\WebLink")
      */
     private ?WebLink $webLink;
 

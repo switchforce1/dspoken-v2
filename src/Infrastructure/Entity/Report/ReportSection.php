@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\CodedTrait;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\CodedTrait;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,13 +52,13 @@ class ReportSection implements EntityInterface
 
     /**
      * @var Article|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report\Article", inversedBy="reportSections")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Report\Article", inversedBy="reportSections")
      */
     private ?Article $article;
 
     /**
      * @var Collection|ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Report\ReportSectionVersion", mappedBy="reportSection",
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Report\ReportSectionVersion", mappedBy="reportSection",
      *     cascade={"persist", "remove"})
      */
     private Collection $reportSectionVersions;

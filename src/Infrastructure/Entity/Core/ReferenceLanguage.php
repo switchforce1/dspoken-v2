@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

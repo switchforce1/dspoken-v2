@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -32,21 +32,21 @@ class ResponseGroup implements EntityInterface
 
     /**
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Quiz")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Quiz")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id", nullable=false)
      */
     private $quiz;
 
     /**
      * @var Language
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Language")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      * @ORM\JoinColumn(name="language_id", referencedColumnName="id", nullable=false)
      */
     protected $language;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\AppFile;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\Publishable;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Common\WeightDisplayableTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\AppFile;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\Publishable;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Common\WeightDisplayableTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -73,19 +73,19 @@ class Language implements EntityInterface
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
     protected $creator;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Core\Location", mappedBy="language")
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\Location", mappedBy="language")
      */
     private $locations;
 
     /**
      * @var AppFile
-     * @ORM\ManyToOne(targetEntity="App\Entity\Common\AppFile", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Common\AppFile", cascade={"persist"})
      * @ORM\JoinColumn(name="app_file_id", referencedColumnName="id", nullable=true)
      */
     private $appFile;

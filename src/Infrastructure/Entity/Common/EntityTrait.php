@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Common;
+namespace App\Infrastructure\Entity\Common;
 
 
 use App\Util\Constances;
@@ -9,7 +9,7 @@ use App\Util\StringUtil;
 
 /**
  * Trait EntityTrait
- * @package App\Entity\Common
+ * @package App\Infrastructure\Entity\Common
  */
 trait EntityTrait
 {

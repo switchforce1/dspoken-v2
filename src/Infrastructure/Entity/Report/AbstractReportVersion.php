@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\CodedTrait;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Core\ReferenceLanguage;
+use App\Infrastructure\Entity\Common\CodedTrait;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Core\ReferenceLanguage;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -31,7 +31,7 @@ abstract class AbstractReportVersion
 
     /**
      * @var ReferenceLanguage|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\ReferenceLanguage")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
      */
     private ?ReferenceLanguage $referenceLanguage;
 

@@ -6,11 +6,11 @@
  * Time: 02:23
  */
 
-namespace App\Entity;
+namespace App\Infrastructure\Entity;
 
 /**
  * Interface EntityInterface
- * @package App\Entity
+ * @package App\Infrastructure\Entity
  */
 interface EntityInterface
 {

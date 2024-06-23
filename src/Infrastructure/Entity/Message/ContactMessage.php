@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Message;
+namespace App\Infrastructure\Entity\Message;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class ContactMessage
- * @package App\Entity\Message
+ * @package App\Infrastructure\Entity\Message
  * @ORM\Table(name="message_contact_message")
  * @ORM\Entity(repositoryClass="App\Repository\Message\ContactMessageRepository")
  */

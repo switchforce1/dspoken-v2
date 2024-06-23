@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -50,14 +50,14 @@ class Response implements EntityInterface
 
     /**
      * @var Question
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Question")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Question")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     protected $question;
 
     /**
      * @var ResponseGroup
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\ResponseGroup")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ResponseGroup")
      * @ORM\JoinColumn(name="response_group_id", referencedColumnName="id")
      */
     private $responseGroup;

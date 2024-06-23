@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Common;
+namespace App\Infrastructure\Entity\Common;
 
-use App\Entity\Core\ReferenceLanguage;
+use App\Infrastructure\Entity\Core\ReferenceLanguage;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Class EntityVersion
- * @package App\Entity\Common
+ * @package App\Infrastructure\Entity\Common
  * @ORM\MappedSuperclass
  */
 abstract class EntityVersion
@@ -37,7 +37,7 @@ abstract class EntityVersion
 
     /**
      * @var ReferenceLanguage
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\ReferenceLanguage")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\ReferenceLanguage")
      * @ORM\JoinColumn(name="reference_language_id", nullable=false)
      */
     protected $referenceLanguage;

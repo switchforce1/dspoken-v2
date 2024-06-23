@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Security;
+namespace App\Infrastructure\Entity\Security;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
@@ -111,7 +111,7 @@ class User implements EntityInterface,UserInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="\App\Entity\Security\UserRoleObject", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\App\Infrastructure\Entity\Security\UserRoleObject", mappedBy="user")
      */
     private $userRoleObjects;
 

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Tag;
+namespace App\Infrastructure\Entity\Tag;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\EntityVersion;
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\EntityVersion;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

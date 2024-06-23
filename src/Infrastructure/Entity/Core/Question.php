@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\Publishable;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Common\WeightDisplayableTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\Publishable;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Common\WeightDisplayableTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -56,7 +56,7 @@ class Question implements EntityInterface
 
     /**
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Quiz", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Quiz", inversedBy="questions")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      */
     private $quiz;
@@ -65,13 +65,13 @@ class Question implements EntityInterface
      * Need for display on form/list/web page/translation
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Core\QuestionVersion", mappedBy="question", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\QuestionVersion", mappedBy="question", cascade={"persist", "remove"})
      */
     private $questionVersions;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
     protected $creator;
 

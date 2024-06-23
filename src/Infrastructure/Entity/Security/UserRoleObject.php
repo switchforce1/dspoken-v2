@@ -6,15 +6,15 @@
  * Time: 16:22
  */
 
-namespace App\Entity\Security;
+namespace App\Infrastructure\Entity\Security;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class UserRoleObject
- * @package App\Entity\Security
+ * @package App\Infrastructure\Entity\Security
  * @ORM\Table(name="security_user_role_object")
  * @ORM\Entity(repositoryClass="App\Repository\Security\UserRoleObjectRepository")
  */
@@ -31,13 +31,13 @@ class UserRoleObject implements EntityInterface
 
     /**
      * @var RoleObject
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Security\RoleObject", inversedBy="userRoleObjects")
+     * @ORM\ManyToOne(targetEntity="\App\Infrastructure\Entity\Security\RoleObject", inversedBy="userRoleObjects")
      */
     private $roleObject;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User", inversedBy="userRoleObjects")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User", inversedBy="userRoleObjects")
      */
     private $user;
 

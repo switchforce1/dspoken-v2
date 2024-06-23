@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Common\WeightDisplayableTrait;
-use App\Entity\EntityInterface;
-use App\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Common\WeightDisplayableTrait;
+use App\Infrastructure\Entity\EntityInterface;
+use App\Infrastructure\Entity\Security\User;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -93,13 +93,13 @@ class Location implements EntityInterface
 
     /**
      * @var Language
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Language", inversedBy="locations")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language", inversedBy="locations")
      */
     private $language;
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      */
     protected $creator;
 

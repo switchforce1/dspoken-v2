@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Subscription;
+namespace App\Infrastructure\Entity\Subscription;
 
-use App\Entity\Common\IdentifierTrait;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Core\Language;
-use App\Entity\Security\User;
-use App\Entity\Common\EntityTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\IdentifierTrait;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Core\Language;
+use App\Infrastructure\Entity\Security\User;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class Subscription
- * @package App\Entity\Subscription
+ * @package App\Infrastructure\Entity\Subscription
  * @ORM\Table(name="subscription_subscription", uniqueConstraints={
  *     @ORM\UniqueConstraint(name="language_subscriber_unique", columns={"language_id", "subscriber_id"})
  * })
@@ -67,7 +67,7 @@ class Subscription implements EntityInterface
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="approved_by_id", referencedColumnName="id")
      */
     private $acceptedBy;
@@ -83,7 +83,7 @@ class Subscription implements EntityInterface
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="approved_by_id", referencedColumnName="id")
      */
     private $approvedBy;
@@ -105,7 +105,7 @@ class Subscription implements EntityInterface
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Security\User")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Security\User")
      * @ORM\JoinColumn(name="subscriber_id", referencedColumnName="id")
      */
     private $subscriber;
@@ -113,7 +113,7 @@ class Subscription implements EntityInterface
     /**
      * @var Language
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Core\Language")
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Core\Language")
      * @ORM\JoinColumn(name="language_id", referencedColumnName="id")
      */
     private $language;

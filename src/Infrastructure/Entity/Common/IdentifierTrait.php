@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Common;
+namespace App\Infrastructure\Entity\Common;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Trait EntityTrait
- * @package App\Entity\Common
+ * @package App\Infrastructure\Entity\Common
  */
 trait IdentifierTrait
 {

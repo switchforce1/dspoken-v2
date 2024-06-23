@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity\Common;
+namespace App\Infrastructure\Entity\Common;
 
 use Doctrine\ORM\Mapping as ORM;
 

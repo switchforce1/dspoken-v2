@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Core;
+namespace App\Infrastructure\Entity\Core;
 
-use App\Entity\Common\AppFile;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\Publishable;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Common\WeightDisplayableTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\AppFile;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\Publishable;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Common\WeightDisplayableTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -61,7 +61,7 @@ class Quiz implements EntityInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Core\Question", mappedBy="quiz")
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\Question", mappedBy="quiz")
      */
     private $questions;
 
@@ -69,13 +69,13 @@ class Quiz implements EntityInterface
      * Need for display on form/list/web page/translation
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Core\QuizVersion", mappedBy="quiz", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Infrastructure\Entity\Core\QuizVersion", mappedBy="quiz", cascade={"persist", "remove"})
      */
     private $quizVersions;
 
     /**
      * @var AppFile
-     * @ORM\ManyToOne(targetEntity="App\Entity\Common\AppFile", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Infrastructure\Entity\Common\AppFile", cascade={"persist"})
      * @ORM\JoinColumn(name="app_file_id", referencedColumnName="id")
      */
     private $appFile;

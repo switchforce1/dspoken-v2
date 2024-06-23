@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Report;
+namespace App\Infrastructure\Entity\Report;
 
-use App\Entity\Common\CodedTrait;
-use App\Entity\Common\EntityTrait;
-use App\Entity\Common\Publishable;
-use App\Entity\Common\TimestampableTrait;
-use App\Entity\Core\Language;
+use App\Infrastructure\Entity\Common\CodedTrait;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\Common\Publishable;
+use App\Infrastructure\Entity\Common\TimestampableTrait;
+use App\Infrastructure\Entity\Core\Language;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

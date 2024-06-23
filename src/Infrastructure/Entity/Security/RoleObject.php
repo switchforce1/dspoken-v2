@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity\Security;
+namespace App\Infrastructure\Entity\Security;
 
-use App\Entity\Common\EntityTrait;
-use App\Entity\EntityInterface;
+use App\Infrastructure\Entity\Common\EntityTrait;
+use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -57,7 +57,7 @@ class RoleObject implements EntityInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="\App\Entity\Security\UserRoleObject", mappedBy="roleObject")
+     * @ORM\OneToMany(targetEntity="\App\Infrastructure\Entity\Security\UserRoleObject", mappedBy="roleObject")
      */
     private $userRoleObjects;
 
