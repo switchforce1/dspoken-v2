@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dadja
- * Date: 04/01/2020
- * Time: 16:22
- */
+
+declare(strict_types=1);
 
 namespace App\Infrastructure\Entity\Security;
 
@@ -30,14 +26,20 @@ class UserRoleObject implements EntityInterface
     /**
      * @var RoleObject
      */
-    #[ORM\ManyToOne(targetEntity: \\App\Infrastructure\Entity\Security\RoleObject::class, inversedBy: 'userRoleObjects')]
-    private ?\App\Infrastructure\Entity\Security\RoleObject $roleObject = null;
+    #[ORM\ManyToOne(
+        targetEntity: RoleObject::class,
+        inversedBy: 'userRoleObjects'
+    )]
+    private ?RoleObject $roleObject = null;
 
     /**
      * @var User
      */
-    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class, inversedBy: 'userRoleObjects')]
-    private ?\App\Infrastructure\Entity\Security\User $user = null;
+    #[ORM\ManyToOne(
+        targetEntity: User::class,
+        inversedBy: 'userRoleObjects'
+    )]
+    private ?User $user = null;
 
     /**
      * @var \DateTimeInterface

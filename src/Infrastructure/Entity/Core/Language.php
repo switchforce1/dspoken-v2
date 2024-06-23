@@ -12,6 +12,7 @@ use App\Infrastructure\Entity\EntityInterface;
 use App\Infrastructure\Entity\Security\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -248,6 +249,47 @@ class Language implements EntityInterface
     public function setAppFile(?AppFile $appFile): Language
     {
         $this->appFile = $appFile;
+        return $this;
+    }
+
+    public function setCode(string $code): static
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    public function getScore(): ?int
+    {
+        return $this->score;
+    }
+
+    public function setScore(int $score): static
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    public function addLocation(Location $location): static
+    {
+        if (!$this->locations->contains($location)) {
+            $this->locations->add($location);
+            $location->setLanguage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocation(Location $location): static
+    {
+        if ($this->locations->removeElement($location)) {
+            // set the owning side to null (unless already changed)
+            if ($location->getLanguage() === $this) {
+                $location->setLanguage(null);
+            }
+        }
+
         return $this;
     }
 }

@@ -119,4 +119,26 @@ class WebLink extends AbstractReport implements EntityInterface
         $this->article = $article;
         return $this;
     }
+
+    public function addDefaultReportVersion(DefaultReportVersion $defaultReportVersion): static
+    {
+        if (!$this->defaultReportVersions->contains($defaultReportVersion)) {
+            $this->defaultReportVersions->add($defaultReportVersion);
+            $defaultReportVersion->setWebLink($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDefaultReportVersion(DefaultReportVersion $defaultReportVersion): static
+    {
+        if ($this->defaultReportVersions->removeElement($defaultReportVersion)) {
+            // set the owning side to null (unless already changed)
+            if ($defaultReportVersion->getWebLink() === $this) {
+                $defaultReportVersion->setWebLink(null);
+            }
+        }
+
+        return $this;
+    }
 }

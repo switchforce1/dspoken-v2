@@ -8,6 +8,7 @@ use App\Infrastructure\Entity\Common\TimestampableTrait;
 use App\Infrastructure\Entity\Common\WeightDisplayableTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use App\Infrastructure\Entity\Security\User;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -346,6 +347,18 @@ class Location implements EntityInterface
      * @return  self
      */ 
     public function setIsMain(bool $isMain)
+    {
+        $this->isMain = $isMain;
+
+        return $this;
+    }
+
+    public function isMain(): ?bool
+    {
+        return $this->isMain;
+    }
+
+    public function setMain(bool $isMain): static
     {
         $this->isMain = $isMain;
 

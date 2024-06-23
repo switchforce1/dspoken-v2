@@ -6,6 +6,7 @@ namespace App\Infrastructure\Entity\Core;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\Common\TimestampableTrait;
 use App\Infrastructure\Entity\EntityInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 

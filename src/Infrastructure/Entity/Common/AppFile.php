@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Entity\Common;
 
 use App\Infrastructure\Entity\EntityInterface;
+use Doctrine\DBAL\Types\Types;
 use Ramsey\Uuid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -223,6 +224,13 @@ class AppFile implements EntityInterface
     public function setCreatedAt(?\DateTime $createdAt): AppFile
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function setCode(string $code): static
+    {
+        $this->code = $code;
+
         return $this;
     }
 }

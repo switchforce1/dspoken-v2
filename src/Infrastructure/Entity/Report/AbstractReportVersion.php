@@ -6,6 +6,7 @@ namespace App\Infrastructure\Entity\Report;
 use App\Infrastructure\Entity\Common\CodedTrait;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\Core\ReferenceLanguage;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

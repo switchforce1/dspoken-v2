@@ -8,6 +8,7 @@ use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\Common\IdentifierTrait;
 use App\Infrastructure\Entity\Core\ReferenceLanguage;
 use App\Infrastructure\Entity\EntityInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

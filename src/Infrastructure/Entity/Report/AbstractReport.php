@@ -8,6 +8,7 @@ use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\Common\Publishable;
 use App\Infrastructure\Entity\Common\TimestampableTrait;
 use App\Infrastructure\Entity\Core\Language;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

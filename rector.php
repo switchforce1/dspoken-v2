@@ -24,7 +24,6 @@ return RectorConfig::configure()
     ->withSets([
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
-        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
-     //   SymfonySetList::FRAMEWORK_64
+        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES
     ])
     ;

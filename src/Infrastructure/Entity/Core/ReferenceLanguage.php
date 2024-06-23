@@ -5,6 +5,7 @@ namespace App\Infrastructure\Entity\Core;
 
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\EntityInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -147,6 +148,13 @@ class ReferenceLanguage implements EntityInterface
     public function setIsDefault(bool $isDefault): ReferenceLanguage
     {
         $this->isDefault = $isDefault;
+        return $this;
+    }
+
+    public function setDefault(?bool $isDefault): static
+    {
+        $this->isDefault = $isDefault;
+
         return $this;
     }
 }

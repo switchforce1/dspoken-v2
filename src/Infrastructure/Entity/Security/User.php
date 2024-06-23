@@ -6,13 +6,15 @@ namespace App\Infrastructure\Entity\Security;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Table(name: 'security_user')]
 #[ORM\Entity(repositoryClass: \App\Repository\Security\UserRepository::class)]
-class User implements EntityInterface,UserInterface
+class User implements EntityInterface, UserInterface
 {
     use EntityTrait;
     #[ORM\Id]
@@ -108,15 +110,18 @@ class User implements EntityInterface,UserInterface
     /**
      * @var ArrayCollection
      */
-    #[ORM\OneToMany(targetEntity: \\App\Infrastructure\Entity\Security\UserRoleObject::class, mappedBy: 'user')]
-    private \Doctrine\Common\Collections\Collection $userRoleObjects;
+    #[ORM\OneToMany(
+        targetEntity: UserRoleObject::class,
+        mappedBy: 'user'
+    )]
+    private Collection $userRoleObjects;
 
     /**
      * User constructor.
      */
     public function __construct()
     {
-        $this->userRoleObjects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userRoleObjects = new ArrayCollection();
         $this->enabled = false;
         $this->roles = [];
         $this->code = Uuid::uuid4()->toString();
@@ -455,6 +460,11 @@ class User implements EntityInterface,UserInterface
         // TODO: Implement getSalt() method.
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->getEmail();
+    }
+
     /**
      * Removes sensitive data from the user.
      *
@@ -464,5 +474,27 @@ class User implements EntityInterface,UserInterface
     public function eraseCredentials(): void
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function setCode(string $code): static
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    public function setRoles(?array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserRoleObject>
+     */
+    public function getUserRoleObjects(): Collection
+    {
+        return $this->userRoleObjects;
     }
 }

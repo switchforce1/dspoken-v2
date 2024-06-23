@@ -5,6 +5,7 @@ namespace App\Infrastructure\Entity\Message;
 
 use App\Infrastructure\Entity\Common\TimestampableTrait;
 use App\Infrastructure\Entity\Security\User;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

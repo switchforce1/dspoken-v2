@@ -5,6 +5,8 @@ namespace App\Infrastructure\Entity\Security;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'security_role_object')]
@@ -52,7 +54,10 @@ class RoleObject implements EntityInterface
     /**
      * @var ArrayCollection
      */
-    #[ORM\OneToMany(targetEntity: \\App\Infrastructure\Entity\Security\UserRoleObject::class, mappedBy: 'roleObject')]
+    #[ORM\OneToMany(
+        targetEntity: UserRoleObject::class,
+         mappedBy: 'roleObject'
+    )]
     private \Doctrine\Common\Collections\Collection $userRoleObjects;
 
     /**
@@ -140,6 +145,28 @@ class RoleObject implements EntityInterface
     public function setUserRoleObjects(ArrayCollection $userRoleObjects): RoleObject
     {
         $this->userRoleObjects = $userRoleObjects;
+        return $this;
+    }
+
+    public function addUserRoleObject(UserRoleObject $userRoleObject): static
+    {
+        if (!$this->userRoleObjects->contains($userRoleObject)) {
+            $this->userRoleObjects->add($userRoleObject);
+            $userRoleObject->setRoleObject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserRoleObject(UserRoleObject $userRoleObject): static
+    {
+        if ($this->userRoleObjects->removeElement($userRoleObject)) {
+            // set the owning side to null (unless already changed)
+            if ($userRoleObject->getRoleObject() === $this) {
+                $userRoleObject->setRoleObject(null);
+            }
+        }
+
         return $this;
     }
 }
