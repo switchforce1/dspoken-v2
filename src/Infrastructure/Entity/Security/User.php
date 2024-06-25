@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
 
 #[ORM\Table(name: 'security_user')]
-#[ORM\Entity(repositoryClass: \App\Repository\Security\UserRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Security\UserRepository::class)]
 class User implements EntityInterface, UserInterface
 {
     use EntityTrait;

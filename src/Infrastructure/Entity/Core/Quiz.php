@@ -19,7 +19,7 @@ use Ramsey\Uuid\Uuid;
  * Questionnaire (Lots de question)
  */
 #[ORM\Table(name: 'core_quiz')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\QuizRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\QuizRepository::class)]
 class Quiz implements EntityInterface
 {
     use EntityTrait,

@@ -9,8 +9,9 @@ help:
 	"> cc-prod       : clear cache in prod env \n" \
 	"> cc-f          : clear cache by removing files physically \n" \
 	"> upload-access : Set chmod 755 to assets/images/uploads \n" \
-	"> start  : docker start\n" \
-	"> stop   : docker stop\n" \
+	"> start         : docker start\n" \
+	"> stop          : docker stop\n" \
+	"> down          : docker down containers\n" \
 	"> npm-install   : Install npm \n" \
 	"> npm-repair    : Run npm audit fix to fix some vulnerabilities \n" \
 	"> npm-update    : update npm modules \n" \
@@ -33,6 +34,8 @@ start-build:
 	docker compose up -d --build
 stop:
 	docker compose stop
+down:
+	docker compose down
 restart: stop start
 build:
 	docker compose build

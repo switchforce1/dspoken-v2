@@ -18,7 +18,7 @@ use Ramsey\Uuid\Uuid;
  * Question
  */
 #[ORM\Table(name: 'core_question')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\QuestionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\QuestionRepository::class)]
 class Question implements EntityInterface
 {
     use EntityTrait,

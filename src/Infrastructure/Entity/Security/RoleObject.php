@@ -10,7 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'security_role_object')]
-#[ORM\Entity(repositoryClass: \App\Repository\Security\RoleObjectRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Security\RoleObjectRepository::class)]
 class RoleObject implements EntityInterface
 {
     use EntityTrait;

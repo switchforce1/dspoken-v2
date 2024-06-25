@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 #[ORM\Table(name: 'subscription_subscription')]
 #[ORM\UniqueConstraint(name: 'language_subscriber_unique', columns: ['language_id', 'subscriber_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\Subscription\SubscriptionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Subscription\SubscriptionRepository::class)]
 class Subscription implements EntityInterface
 {
     use EntityTrait,

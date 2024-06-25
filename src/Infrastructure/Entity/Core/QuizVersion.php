@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 #[ORM\Table(name: 'core_quiz_version')]
 #[ORM\UniqueConstraint(name: 'quiz_version_unique', columns: ['quiz_id', 'reference_language_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\QuizVersionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\QuizVersionRepository::class)]
 class QuizVersion implements EntityInterface
 {
     use EntityTrait,

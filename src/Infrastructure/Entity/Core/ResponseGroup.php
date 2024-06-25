@@ -15,7 +15,7 @@ use Ramsey\Uuid\Uuid;
  * Reponse à une question donnée par un membre
  */
 #[ORM\Table(name: 'core_response_group')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\ResponseGroupRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\ResponseGroupRepository::class)]
 class ResponseGroup implements EntityInterface
 {
     use EntityTrait,

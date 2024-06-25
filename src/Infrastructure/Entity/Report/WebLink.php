@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'report_web_link')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\WebLinkRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\WebLinkRepository::class)]
 class WebLink extends AbstractReport implements EntityInterface
 {
     use IdentifierTrait;

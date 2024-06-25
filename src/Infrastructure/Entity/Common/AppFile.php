@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Infrastructure\Entity\Common
  */
 #[ORM\Table(name: 'common_app_file')]
-#[ORM\Entity(repositoryClass: \App\Repository\Common\AppFileRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Common\AppFileRepository::class)]
 class AppFile implements EntityInterface
 {
     use EntityTrait,IdentifierTrait;

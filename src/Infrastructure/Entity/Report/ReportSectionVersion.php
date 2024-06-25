@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 #[ORM\Table(name: 'report_report_section_version')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\ReportSectionVersionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\ReportSectionVersionRepository::class)]
 class ReportSectionVersion implements EntityInterface
 {
     use IdentifierTrait, EntityTrait, CodedTrait;

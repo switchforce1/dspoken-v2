@@ -24,15 +24,17 @@ services:
   database:
     image: postgres:16-alpine
     env_file:
+      - .build.env
       - .env
     healthcheck:
       test: ["CMD", "pg_isready", "-d", "dspoken", "-U", "dspoken"]
       timeout: 5s
       retries: 5
       start_period: 60s
+    ports:
+      - "5434:5432"
     volumes:
       - ./docker/database/data:/var/lib/postgresql/data:rw
-
   pgadmin:
     image: dpage/pgadmin4
     env_file:

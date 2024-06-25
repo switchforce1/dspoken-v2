@@ -19,7 +19,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 #[ORM\Table(name: 'core_question_version')]
 #[ORM\UniqueConstraint(name: 'question_version_unique', columns: ['question_id', 'reference_language_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\QuestionVersionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\QuestionVersionRepository::class)]
 #[UniqueEntity(fields: ['question_id', 'reference_language_id'], message: 'QuestionVersion for given question  and reference_language already exists in database.')]
 class QuestionVersion implements EntityInterface
 {

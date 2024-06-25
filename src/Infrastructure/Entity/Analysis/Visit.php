@@ -15,7 +15,7 @@ use Ramsey\Uuid\Uuid;
  * @package App\Infrastructure\Entity\Analysis
  */
 #[ORM\Table(name: 'analysis_visit')]
-#[ORM\Entity(repositoryClass: \App\Repository\Analysis\VisitRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Analysis\VisitRepository::class)]
 class Visit implements EntityInterface
 {
     use IdentifierTrait,

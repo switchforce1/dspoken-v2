@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Infrastructure\Entity\Message
  */
 #[ORM\Table(name: 'message_contact_message')]
-#[ORM\Entity(repositoryClass: \App\Repository\Message\ContactMessageRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Message\ContactMessageRepository::class)]
 class ContactMessage extends AbstractMessage implements EntityInterface
 {
     use IdentifierTrait;

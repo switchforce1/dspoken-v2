@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Infrastructure\Entity\MemberShip
  */
 #[ORM\Table(name: 'member_ship_user_group')]
-#[ORM\Entity(repositoryClass: \App\Repository\MemberShip\UserGroupRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\MemberShip\UserGroupRepository::class)]
 class UserGroup implements EntityInterface
 {
     use EntityTrait,

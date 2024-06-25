@@ -11,7 +11,7 @@ use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'report_language_youtube_link')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageYoutubeLinkRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\LanguageYoutubeLinkRepository::class)]
 class LanguageYoutubeLink implements EntityInterface
 {
     use EntityTrait,

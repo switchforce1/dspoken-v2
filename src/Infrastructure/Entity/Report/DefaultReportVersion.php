@@ -8,7 +8,7 @@ use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'report_default_report_version')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\DefaultReportVersionRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\DefaultReportVersionRepository::class)]
 class DefaultReportVersion extends AbstractReportVersion implements EntityInterface
 {
     use IdentifierTrait;

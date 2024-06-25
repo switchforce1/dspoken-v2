@@ -16,7 +16,7 @@ use Ramsey\Uuid\Uuid;
  * Information de localisation
  */
 #[ORM\Table(name: 'core_location')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\LocationRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\LocationRepository::class)]
 class Location implements EntityInterface
 {
     use EntityTrait,

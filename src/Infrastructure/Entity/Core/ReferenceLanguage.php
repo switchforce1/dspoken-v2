@@ -13,7 +13,7 @@ use Ramsey\Uuid\Uuid;
  * Langue de refenrce connue (au debut francais, anglais ... puis allemend ...)
  */
 #[ORM\Table(name: 'core_reference_language')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\ReferenceLanguageRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\ReferenceLanguageRepository::class)]
 class ReferenceLanguage implements EntityInterface
 {
     use EntityTrait;

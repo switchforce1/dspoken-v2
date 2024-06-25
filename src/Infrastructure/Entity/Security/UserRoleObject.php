@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Infrastructure\Entity\Security
  */
 #[ORM\Table(name: 'security_user_role_object')]
-#[ORM\Entity(repositoryClass: \App\Repository\Security\UserRoleObjectRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Security\UserRoleObjectRepository::class)]
 class UserRoleObject implements EntityInterface
 {
     use EntityTrait;

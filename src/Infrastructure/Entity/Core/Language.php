@@ -20,7 +20,7 @@ use Ramsey\Uuid\Uuid;
  * La langue créée
  */
 #[ORM\Table(name: 'core_language')]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\LanguageRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\LanguageRepository::class)]
 class Language implements EntityInterface
 {
     use EntityTrait,

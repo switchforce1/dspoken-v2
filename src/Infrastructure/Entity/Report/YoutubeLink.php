@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name: 'report_youtube_link')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\YoutubeLinkRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\YoutubeLinkRepository::class)]
 class YoutubeLink extends AbstractReport implements EntityInterface
 {
     use IdentifierTrait;

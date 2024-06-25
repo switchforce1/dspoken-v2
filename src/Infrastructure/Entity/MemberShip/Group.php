@@ -14,7 +14,7 @@ use Ramsey\Uuid\Uuid;
  * @package App\Infrastructure\Entity\MemberShip
  */
 #[ORM\Table(name: 'member_ship_group')]
-#[ORM\Entity(repositoryClass: \App\Repository\MemberShip\GroupRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\MemberShip\GroupRepository::class)]
 class Group implements EntityInterface
 {
     use EntityTrait,

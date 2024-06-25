@@ -11,7 +11,7 @@ use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'report_language_web_link')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageWebLinkRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\LanguageWebLinkRepository::class)]
 class LanguageWebLink implements EntityInterface
 {
     use EntityTrait,

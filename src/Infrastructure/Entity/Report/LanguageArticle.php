@@ -12,7 +12,7 @@ use App\Infrastructure\Entity\EntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'report_language_article')]
-#[ORM\Entity(repositoryClass: \App\Repository\Report\LanguageArticleRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Report\LanguageArticleRepository::class)]
 class LanguageArticle implements EntityInterface
 {
     use EntityTrait,

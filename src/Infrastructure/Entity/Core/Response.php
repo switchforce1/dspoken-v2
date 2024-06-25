@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 #[ORM\Table(name: 'core_response')]
 #[ORM\UniqueConstraint(name: 'question_response_group_unique', columns: ['question_id', 'response_group_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\Core\ResponseRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Core\ResponseRepository::class)]
 class Response implements EntityInterface
 {
     use EntityTrait,

@@ -7,13 +7,12 @@ use App\Infrastructure\Entity\Common\CodedTrait;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\Common\IdentifierTrait;
 use App\Infrastructure\Entity\EntityInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 #[ORM\Table(name: 'tag_tag')]
-#[ORM\Entity(repositoryClass: \App\Repository\Tag\TagRepository::class)]
+#[ORM\Entity(repositoryClass: \App\Infrastructure\Repository\Tag\TagRepository::class)]
 class Tag implements EntityInterface
 {
     use IdentifierTrait, EntityTrait, CodedTrait;
