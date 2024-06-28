@@ -16,4 +16,9 @@ use Doctrine\ORM\Mapping as ORM;
 class TagVersion extends EntityVersion implements EntityInterface
 {
     use IdentifierTrait, EntityTrait;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }

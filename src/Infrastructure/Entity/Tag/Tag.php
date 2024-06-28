@@ -19,6 +19,7 @@ class Tag implements EntityInterface
 
     public function __construct()
     {
+        dd('*****************************');
         $this->code = Uuid::uuid4()->toString();
     }
 

@@ -9,6 +9,7 @@ use App\Infrastructure\Entity\Core\Language;
 use App\Infrastructure\Entity\Security\User;
 use App\Infrastructure\Entity\Common\EntityTrait;
 use App\Infrastructure\Entity\EntityInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -396,6 +397,13 @@ class Subscription implements EntityInterface
     public function setForEditor(bool $forEditor): Subscription
     {
         $this->forEditor = $forEditor;
+        return $this;
+    }
+
+    public function setCode(string $code): static
+    {
+        $this->code = $code;
+
         return $this;
     }
 }

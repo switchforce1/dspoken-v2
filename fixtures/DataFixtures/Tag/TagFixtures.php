@@ -9,19 +9,22 @@ use App\Entity\Product;
 use App\Infrastructure\Entity\Tag\Tag;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Fixtures\Factory\Tag\TagFactory;
 
 class TagFixtures extends BaseFixture
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 20; $i++) {
-            $tag = new Tag();
-            $tag
-                ->setDefaultLabel('tag-label_ '.$i)
-                ->setDefaultDescription('Descriptions of label - '. $i);
-            $manager->persist($tag);
-        }
+        TagFactory::new()
+            // ->instantiateWith(fn () => new Tag())
+            ->many(40)
+        ;
+        // // dd($tag);
+        // TagFactory::createMany(40);
+    }
 
-        $manager->flush();
+    public function create(array|callable $attributes = []): mixed
+    {
+        return new Tag();    
     }
 }

@@ -1,0 +1,50 @@
+<?php
+
+namespace Fixtures\Factory\Report;
+
+use App\Infrastructure\Entity\Report\ArticleVersion;
+use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+
+/**
+ * @extends PersistentProxyObjectFactory<ArticleVersion>
+ */
+final class ArticleVersionFactory extends PersistentProxyObjectFactory
+{
+    /**
+     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
+     *
+     * @todo inject services if required
+     */
+    public function __construct()
+    {
+    }
+
+    public static function class(): string
+    {
+        return ArticleVersion::class;
+    }
+
+    /**
+     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
+     *
+     * @todo add your default values here
+     */
+    protected function defaults(): array|callable
+    {
+        return [
+            'code' => self::faker()->uuid(),
+            'description' => self::faker()->text(),
+            'title' => self::faker()->text(255),
+        ];
+    }
+
+    /**
+     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
+     */
+    protected function initialize(): static
+    {
+        return $this
+            // ->afterInstantiate(function(ArticleVersion $articleVersion): void {})
+        ;
+    }
+}
