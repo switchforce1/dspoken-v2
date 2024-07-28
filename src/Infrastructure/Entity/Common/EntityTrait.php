@@ -4,8 +4,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Entity\Common;
 
 
-use App\Util\Constances;
-use App\Util\StringUtil;
+use App\Application\Util\DateUtil;
 
 /**
  * Trait EntityTrait
@@ -23,7 +22,7 @@ trait EntityTrait
             if (!is_object($value)) {
                 $arrayData[$attribute] = $value;
             } elseif ($value instanceof \DateTime) {
-                $arrayData[$attribute] = $value->format(Constances::DEFAULT_DATE_FORMAT);
+                $arrayData[$attribute] = $value->format(DateUtil::DEFAULT_DATE_FORMAT);
             } else {
                 continue;
             }
