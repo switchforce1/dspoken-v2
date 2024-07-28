@@ -15,12 +15,9 @@ class TagFixtures extends BaseFixture
 {
     public function load(ObjectManager $manager)
     {
-        TagFactory::new()
-            // ->instantiateWith(fn () => new Tag())
-            ->many(40)
-        ;
-        // // dd($tag);
-        // TagFactory::createMany(40);
+        foreach(TagFactory::DEFAULT_LABELS as $defaultLabel) {
+            TagFactory::createOne(['defaultLabel' => $defaultLabel]);
+        }
     }
 
     public function create(array|callable $attributes = []): mixed

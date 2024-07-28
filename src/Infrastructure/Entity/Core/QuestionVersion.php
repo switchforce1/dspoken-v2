@@ -8,6 +8,7 @@ use App\Infrastructure\Entity\Common\IdentifierTrait;
 use App\Infrastructure\Entity\Common\TimestampableTrait;
 use App\Infrastructure\Entity\EntityInterface;
 use App\Infrastructure\Entity\Security\User;
+use App\Infrastructure\Entity\Core\Question;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,8 +38,8 @@ class QuestionVersion implements EntityInterface
      * @var Question
      */
     #[ORM\JoinColumn(name: 'question_id', nullable: false)]
-    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Core\Question::class, inversedBy: 'questionVersions')]
-    protected ?\App\Infrastructure\Entity\Core\Question $question = null;
+    #[ORM\ManyToOne(targetEntity: Question::class, inversedBy: 'questionVersions')]
+    protected ?Question $question = null;
 
     /**
      * @var ReferenceLanguage
@@ -51,8 +52,8 @@ class QuestionVersion implements EntityInterface
      * @var User
      */
     #[ORM\JoinColumn(name: 'creator_id', nullable: true)]
-    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Security\User::class)]
-    protected ?\App\Infrastructure\Entity\Security\User $creator = null;
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    protected ?User $creator = null;
 
     /**
      * QuestionVersion constructor.

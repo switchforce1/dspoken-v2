@@ -60,7 +60,7 @@ class Quiz implements EntityInterface
      * @var ArrayCollection
      */
     #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\Question::class, mappedBy: 'quiz')]
-    private \Doctrine\Common\Collections\Collection $questions;
+    private ?Collection $questions;
 
     /**
      * Need for display on form/list/web page/translation
@@ -68,14 +68,14 @@ class Quiz implements EntityInterface
      * @var ArrayCollection
      */
     #[ORM\OneToMany(targetEntity: \App\Infrastructure\Entity\Core\QuizVersion::class, mappedBy: 'quiz', cascade: ['persist', 'remove'])]
-    private \Doctrine\Common\Collections\Collection $quizVersions;
+    private ?Collection $quizVersions;
 
     /**
      * @var AppFile
      */
     #[ORM\JoinColumn(name: 'app_file_id', referencedColumnName: 'id')]
-    #[ORM\ManyToOne(targetEntity: \App\Infrastructure\Entity\Common\AppFile::class, cascade: ['persist'])]
-    private ?\App\Infrastructure\Entity\Common\AppFile $appFile = null;
+    #[ORM\ManyToOne(targetEntity: AppFile::class, cascade: ['persist'])]
+    private ?AppFile $appFile = null;
 
     /**
      * @var boolean

@@ -17,26 +17,19 @@ class Tag implements EntityInterface
 {
     use IdentifierTrait, EntityTrait, CodedTrait;
 
-    public function __construct()
-    {
-        dd('*****************************');
-        $this->code = Uuid::uuid4()->toString();
-    }
-
-    /**
-     * @var string
-     */
+    #[ORM\Column(name: 'default_label', type: 'string', length: 64, nullable: false)]
     private string $defaultLabel;
 
-    /**
-     * @var string
-     */
+    #[ORM\Column(name: 'default_description', type: 'text', nullable: true)]
     private string $defaultDescription;
 
-    /**
-     * @var Collection|null
-     */
+    #[ORM\OneToMany(targetEntity: TagVersion::class, mappedBy: 'tag')]
     private ?Collection $tagVersions;
+
+    public function __construct()
+    {
+        $this->code = Uuid::uuid4()->toString();
+    }
 
     /**
      * @return string

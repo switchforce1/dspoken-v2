@@ -12,6 +12,10 @@ use Zenstruck\Foundry\ModelFactory;
  */
 final class TagFactory extends PersistentObjectFactory
 {
+    public const array DEFAULT_LABELS = [
+        'region', 'hello', 'nice', 'country', 'club', 'edit'
+    ];
+
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
      *
@@ -34,7 +38,8 @@ final class TagFactory extends PersistentObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'code' => self::faker()->uuid(),
+            // 'code' => self::faker()->uuid(),
+            'defaultDescription' => self::faker()->text(),
         ];
     }
 
@@ -44,7 +49,7 @@ final class TagFactory extends PersistentObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Tag $tag): void {})
+            ->afterInstantiate(function(Tag $tag): void {})
         ;
     }
 }

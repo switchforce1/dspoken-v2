@@ -3,6 +3,7 @@
 namespace Fixtures\Factory\Tag;
 
 use App\Infrastructure\Entity\Core\ReferenceLanguage;
+use App\Infrastructure\Entity\Tag\Tag;
 use App\Infrastructure\Entity\Tag\TagVersion;
 use Doctrine\ORM\EntityManagerInterface;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
@@ -20,6 +21,7 @@ final class TagVersionFactory extends PersistentObjectFactory
      */
     public function __construct(private EntityManagerInterface $em)
     {
+        parent::__construct();
     }
 
     public static function class(): string
@@ -35,11 +37,18 @@ final class TagVersionFactory extends PersistentObjectFactory
     protected function defaults(): array|callable
     {
         $referenceLanguageCode = self::faker()->randomElement(['fr', 'en']);
+        $defaultLabel = self::faker()->randomElement(TagFactory::DEFAULT_LABELS);
+
+        $tag = $this->em->getRepository(Tag::class)->findOneBy([
+            'defaultLabel' => $defaultLabel
+        ]);
+        
         return [
             'code' => self::faker()->uuid(),
-            'description' => self::faker()->text(),
             'label' => self::faker()->text(255),
+            'description' => self::faker()->text(),
             'referenceLanguage' => $this->em->getRepository(ReferenceLanguage::class)->findOneBy(['code'=> $referenceLanguageCode]),
+            'tag' => $tag,
         ];
     }
 
@@ -48,7 +57,6 @@ final class TagVersionFactory extends PersistentObjectFactory
      */
     protected function initialize(): static
     {
-        $hello  = '';
         return $this
             ->afterInstantiate(function(TagVersion $tagVersion): void {
                 
